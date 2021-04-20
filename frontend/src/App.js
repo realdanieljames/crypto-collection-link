@@ -7,6 +7,7 @@ import CryptoRankingPage from './components/CryptoRankingPage/CryptoRankingPage'
 import Navbar from "./components/Navbar/Navbar"
 import CreateNewAccount from './components/CreateNewAccount/CreateNewAccount'
 import Login from './components/Login/Login'
+import UserProfile from './components/UserProfile/UserProfile'
 
 function App(props) {
 
@@ -24,6 +25,7 @@ function App(props) {
         <Route  exact path="/" component={CryptoRankingPage}/>
         <Route exact path="/register" component={CreateNewAccount} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/profile" component={UserProfile}/>
       </Router>
      
     </div>

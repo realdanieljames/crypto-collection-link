@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import CreateNewAccount from "../CreateNewAccount/CreateNewAccount";
 import Login from "../Login/Login";
+import UserProfile from "../UserProfile/UserProfile";
 
 const Navbar = () => {
   return (
@@ -26,6 +27,10 @@ const Navbar = () => {
           {/* <Link className="link" to="/register"> */}
             <CreateNewAccount />
           {/* </Link> */}
+      {/* <Link className="link" to="/profile" > */}
+      
+      {/* <UserProfile/> */}
+      {/* </Link> */}
         </div>
       </nav>
 

@@ -81,11 +81,11 @@ return (
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth='xs'  aria-labelledby="form-dialog-title">
         
         <DialogContent>
-          <DialogTitle id="form-dialog-title"><h1>Create an Account</h1> </DialogTitle>
+          <DialogTitle id="form-dialog-title"><h1>Create an Account</h1><h3>It's quick and easy.</h3> </DialogTitle>
           <DialogContentText>
        
           </DialogContentText>
-          <hr/>
+          {/* <hr/> */}
 
 
 {/* //=============================================================================================================// */}
@@ -138,29 +138,27 @@ return (
             fullWidth
             
           />
-          <hr/>
+          {/* <hr/> */}
 
         <h3>Already have an account? <a href="">Click here to Log In.</a></h3>
         </DialogContent>
-        <hr/>
+        {/* <hr/>
       <hr/>
       <hr/>
-      <hr/>
+      <hr/> */}
 
 {/* //=============================================================================================================// */}
 {/* //=============================================================================================================// */}
 
         <DialogActions>
-          <button  style={{backgroundColor: 'gold', fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
+          {/* <button  style={{backgroundColor: 'yellow', fontSize:'15px', borderRadius:'7px', padding: '10px', color: 'black'}} onClick={handleClose} >
            {'<<<< ❌ Sign up Later'}
-          </button>
-          <button style={{backgroundColor: 'gold',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={createAccountSubmitButton} >
+          </button> */}
+          <button style={{backgroundColor: 'yellow',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={createAccountSubmitButton} >
             Create Account ➕
           </button>
         </DialogActions>
-      <hr/>
-      <hr/>
-      <hr/>
+
       </Dialog>
     </div>
 

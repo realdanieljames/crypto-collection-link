@@ -1,0 +1,16 @@
+.user__profile__container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto;
+    width: 100%
+}
+
+.user__profile__stats {
+    grid-column: 1/2;
+    background-color: rgb(43, 67, 66);
+}
+
+.user__crypto__collection {
+    grid-column: 3/4;
+    background-color: rgb(43, 67, 66);
+}

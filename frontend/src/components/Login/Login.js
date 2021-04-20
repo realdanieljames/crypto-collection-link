@@ -80,7 +80,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
         console.log(success)
 
         // console.log(success.data.token);
-        // window.localStorage.setItem("jwtToken", success.data.token)
+        window.localStorage.setItem("jwtToken", success.data.token)
         // props.history.push('/main-page')
     } catch (error) {
 
@@ -111,24 +111,25 @@ return (
 
 
         <DialogContent>
-          <DialogTitle id="form-dialog-title"><h1> Log In to your Account<br/>Sign In </h1> </DialogTitle>
+          <DialogTitle id="form-dialog-title"><h1> Log In </h1> <h3>Sign In to an existing account.</h3></DialogTitle>
+          
           {/* <DialogContentText>
             <h3>New to Crypto Collection? <a href="">Create an Account here.</a></h3>
 
           </DialogContentText> */}
-          <hr/>
+
           <TextField
             variant='outlined'
             margin="dense"
             id="username"
-            label="Username"
+            label="Username or Email"
             type="email"
             fullWidth
             onChange={e => setUserName(e.target.value)}
           />
 
           {/* <hr/> */}
-          <TextField
+          {/* <TextField
             variant='outlined'
             margin="dense"
             id="email"
@@ -136,7 +137,7 @@ return (
             type="email"
             fullWidth
             onChange={e => setEmail(e.target.value)}
-          />
+          /> */}
           {/* <hr/> */}
           <TextField
             variant='outlined'
@@ -148,7 +149,7 @@ return (
             onChange={e => setPassword(e.target.value)}
           />
         
-            <hr/>
+
             <DialogContentText>
             <h3>New to Crypto Collection? <a href="">Create an Account here.</a></h3>
 
@@ -156,25 +157,21 @@ return (
 
 
         </DialogContent> 
-        <hr/>
-      <hr/>
+
+
 
         
-      <hr/>
+
         <DialogActions>
-          <button  style={{backgroundColor: 'gold', fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
+          {/* <button  style={{backgroundColor: 'gold', fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
           ❌ Cancel
-          </button>
-          <button style={{backgroundColor: 'gold',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} 
+          </button> */}
+          <button style={{backgroundColor: 'yellow',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} 
             onClick={handleSubmit} >
            Login 🔑 🚪
           </button>
         </DialogActions>
-      <hr/>
-      <hr/>
-      <hr/>
-      <hr/>
-      <hr/>
+   
       </Dialog>
     </div>
     // </div>
