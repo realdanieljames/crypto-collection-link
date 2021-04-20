@@ -1,0 +1,83 @@
+.crypto__data__display {
+    width: auto;
+    height: 550px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    display: grid;
+    /* grid-template-columns: 1fr% 1fr% 1fr%; */
+    grid-template-rows: auto;
+}
+
+.crypto__data__display__elements {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+}
+
+.crypto__data__display__name__logo {
+    height: 10px;
+    display: grid;
+    justify-items: start;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.crypto__data__display__image {
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    height: 40px;
+    width: 40px;
+    /* position: absolute; */
+}
+
+.crypto__data__display__name {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.crypto__data__display__symbol {
+    grid-column: 3/4;
+    grid-row: 1/2;
+    /* background-color: grey; */
+}
+
+.crypto__data__display__rank {
+    grid-row: 2/3;
+    grid-column: 1/2;
+}
+
+.crypto__data__display__description {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+
+.crypto__data__display__numerical__data {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+.crypto__data__display__current__price {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.crypto__data__display__24h__percentage__change {
+    margin: 5px;
+    padding: 5px;
+    font-size: 10px;
+    color: white;
+    border-radius: 10px;
+    /* background-color: grey; */
+}
+
+.crypto__data__display__chart {
+    grid-row: 2/3;
+    grid-column: 1/4;
+}

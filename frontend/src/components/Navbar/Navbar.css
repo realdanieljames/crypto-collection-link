@@ -1,0 +1,108 @@
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 30px;
+}
+
+.header__navigator {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    /* grid-template-columns: 100%; */
+    /* grid-template-rows: 100%; */
+    height: 60px;
+    /* background-color: gold; */
+    background-color: rgb(36, 150, 51);
+}
+
+.header__logo {
+    /* width: 300px; */
+    /* height: 100px; */
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px 100px 10px 90px;
+    /* color: rgb(0, 53, 0); */
+    color: white;
+    /* color: white; */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-size: 20px;
+    align-self: center;
+}
+
+.registration__buttons {
+    display: grid;
+    grid-template-columns: 20% 40%;
+    align-self: center;
+    /* width: 100%; */
+    margin-left: 25vw;
+    /* margin-right: 5vw; */
+    /* padding-top: 25px; */
+}
+
+.login__button {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signup__button {
+    font-weight: bold;
+    width: 50px;
+    cursor: pointer;
+    border-left: solid black 2px;
+    padding-left: 20px;
+}
+
+.router__tabs {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    margin-left: 25%;
+    /* height: 10px; */
+}
+
+.my__collection__tab {
+    display: grid;
+    cursor: pointer;
+    width: 100%;
+    background-color: rgb(36, 150, 51);
+    grid-column: 2/3;
+    height: 20px;
+    border-bottom-left-radius: 5px;
+    border-right: white solid 2px;
+    /* align-content: center; */
+    /* color: white; */
+}
+
+.my__watchlist__tab {
+    /* display: grid; */
+    cursor: pointer;
+    width: 100%;
+    background-color: rgb(36, 150, 51);
+    grid-column: 3/4;
+    height: 20px;
+    /* border-bottom-right-radius: 5px; */
+    border-left: white solid 2px;
+    border-right: white solid 2px;
+}
+
+.shop__tab {
+    cursor: pointer;
+    grid-column: 4/5;
+    width: 100%;
+    background-color: rgb(36, 150, 51);
+    border-left: white solid 2px;
+    border-bottom-right-radius: 5px;
+    height: 20px;
+}
+
+.tab__text {
+    /* padding: 50px; */
+    font-weight: bold;
+    margin-left: 30%;
+    text-decoration: none;
+    /* padding-bottom: 10%; */
+}

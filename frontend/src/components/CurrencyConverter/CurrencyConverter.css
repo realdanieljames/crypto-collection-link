@@ -1,0 +1,26 @@
+.crypto__data__display__currency__converter {
+    margin: 0px;
+    border: 0px solid grey;
+    grid-column: 3/4;
+    grid-row: 1/2;
+    height: 70%;
+    width: 100%;
+    /* background-color: rgba(2, 28, 50, 0.566); */
+    background-color: rgba(105, 178, 37, 0.463);
+}
+
+.base__currency__input {
+    width: 120px;
+}
+
+.base__currency__dropdown {
+    width: 60px;
+}
+
+.quote__currency__input {
+    width: 120px
+}
+
+.quote__currency__dropdown {
+    width: 60px;
+}
