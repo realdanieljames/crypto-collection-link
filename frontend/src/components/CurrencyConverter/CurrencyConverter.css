@@ -5,8 +5,12 @@
     grid-row: 1/2;
     height: 70%;
     width: 100%;
+    border-radius: 15px;
+    /* background-color: white; */
+    /* border: 7px double black; */
+    border: 6px outset white;
     /* background-color: rgba(2, 28, 50, 0.566); */
-    background-color: rgba(105, 178, 37, 0.463);
+    background-color: rgba(213, 174, 253, 0.463);
 }
 
 .base__currency__input {

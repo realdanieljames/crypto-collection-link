@@ -6,10 +6,14 @@
     overflow-y: auto;
     text-align: center;
     padding: 20px;
-    background-color: white;
+    /* background-color: white; */
     display: grid;
     /* grid-template-columns: 1fr% 1fr% 1fr%; */
     grid-template-rows: auto;
+    border-radius: 15px;
+    background-color: rgb(235, 236, 255);
+    /* border: 7px double black; */
+    border: 6px outset white;
 }
 
 .crypto__data__display__elements {

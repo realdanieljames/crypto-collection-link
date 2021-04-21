@@ -5,13 +5,15 @@
 
 .header {
     display: grid;
-    grid-template-columns: 50% 50%;
+    /* grid-template-columns: 50% 50%; */
+    grid-template-columns: 50% 30% 20%;
     height: 30px;
 }
 
 .header__navigator {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 25% 55% 25%;
+    /* grid-template-columns: 50% 50%; */
     /* grid-template-columns: 100%; */
     /* grid-template-rows: 100%; */
     height: 60px;
@@ -24,7 +26,9 @@
     /* height: 100px; */
     margin-top: 0;
     margin-bottom: 0;
-    padding: 10px 100px 10px 90px;
+    padding: 10px 30px 10px 90px;
+    /* padding-left: 90px; */
+    /* padding-right: 0px; */
     /* color: rgb(0, 53, 0); */
     color: white;
     /* color: white; */
@@ -39,7 +43,7 @@
     grid-template-columns: 20% 40%;
     align-self: center;
     /* width: 100%; */
-    margin-left: 25vw;
+    /* margin-left: 25vw; */
     /* margin-right: 5vw; */
     /* padding-top: 25px; */
 }
@@ -47,6 +51,7 @@
 .login__button {
     font-weight: bold;
     cursor: pointer;
+    /* color: white; */
 }
 
 .signup__button {

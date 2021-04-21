@@ -81,7 +81,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
         // console.log(success.data.token);
         window.localStorage.setItem("jwtToken", success.data.token)
-        // props.history.push('/main-page')
+        // props.history.push('/rankings')
     } catch (error) {
 
         console.log(error);

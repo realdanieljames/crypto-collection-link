@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import CreateNewAccount from "../CreateNewAccount/CreateNewAccount";
 import Login from "../Login/Login";
 import UserProfile from "../UserProfile/UserProfile";
+import Search from "../Search/Search"
 
 const Navbar = () => {
   return (
@@ -18,7 +19,7 @@ const Navbar = () => {
             LINK
           </Link>
         </p>
-
+      <Search/>
         <div className="registration__buttons">
           {/* <Link className="link" to="/login"> */}
             <Login />

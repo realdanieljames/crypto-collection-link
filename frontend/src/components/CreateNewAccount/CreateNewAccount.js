@@ -82,9 +82,9 @@ return (
         
         <DialogContent>
           <DialogTitle id="form-dialog-title"><h1>Create an Account</h1><h3>It's quick and easy.</h3> </DialogTitle>
-          <DialogContentText>
+          {/* <DialogContentText> */}
        
-          </DialogContentText>
+          {/* </DialogContentText> */}
           {/* <hr/> */}
 
 
