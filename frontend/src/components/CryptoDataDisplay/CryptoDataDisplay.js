@@ -6,10 +6,10 @@ import {
   setCryptoData,
   // addCryptoData,
   showCryptoData,
-  getCryptoPriceHistory
+  getCryptoPriceHistory,
 } from "../../store/actions/actionCreators";
 import CurrencyConverter from "../CurrencyConverter/CurrencyConverter";
-import Chart from "../CryptoChart/CryptoChart"
+import Chart from "../CryptoChart/CryptoChart";
 
 // <script src="https://widgets.coingecko.com/coingecko-coin-converter-widget.js"></script>
 // <coingecko-coin-converter-widget  coin-id="bitcoin" currency="usd" background-color="#ffffff" font-color="#4c4c4c" locale="en"></coingecko-coin-converter-widget>
@@ -23,15 +23,14 @@ const CryptoDataDisplay = (props) => {
     props.showCryptoData();
   }, []);
 
-  console.log(props);
+  // console.log(props);
 
   return (
     <div className="crypto__data__display">
       {props.cryptoData.map((cryptocurrency) => {
-
         if (cryptocurrency.id === props.selectedCryptoDisplay.id) {
-          console.log(cryptocurrency)
-          console.log(props.selectedCryptoDisplay.id)
+          // console.log(cryptocurrency);
+          // console.log(props.selectedCryptoDisplay.id);
 
           let selectedCryptoData = props.selectedCryptoDisplay.data;
 
@@ -61,7 +60,7 @@ const CryptoDataDisplay = (props) => {
                   Rank #{cryptocurrency.market_cap_rank}
                 </p>
 
-                {/* <div className="crypto__data__display__description">
+                {/*                <div className="crypto__data__display__description">
                 <h3> What is {selectedCryptoData.name}?</h3>
                 <p >{selectedCryptoData.description.en}</p>
                 </div> */}
@@ -82,8 +81,7 @@ const CryptoDataDisplay = (props) => {
                           : "red",
                     }}
                   >
-                    {cryptocurrency.price_change_percentage_24h}
-                    %
+                    {cryptocurrency.price_change_percentage_24h}%
                   </span>
                 </div>
                 <div>
@@ -91,11 +89,8 @@ const CryptoDataDisplay = (props) => {
                 </div>
               </div>
               <CurrencyConverter />
-       
-              
 
-
-              <Chart/>
+              <Chart />
             </div>
           );
         }
@@ -117,5 +112,5 @@ export default connect(mapStateToProps, {
   setCryptoData,
   // addCryptoData,
   showCryptoData,
-  getCryptoPriceHistory
+  getCryptoPriceHistory,
 })(CryptoDataDisplay);

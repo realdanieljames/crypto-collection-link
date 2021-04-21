@@ -18,7 +18,7 @@ const baseCurrencyDropdownRef = useRef()
 //     props.setCryptoData();
 //   }, []);
 
-console.log(props);
+
 
 let selectedCryptoData = props.selectedCryptoDisplay.data;
 

@@ -12,7 +12,7 @@ export const setCryptoData = () => async dispatch => {
         // console.log(getStartUpData)
     const getPriceHistory = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1609515825&to=1618933425`)
 
-    console.log(getStartUpData)
+    // console.log(getStartUpData)
 
     dispatch({
         type: actionTypes.SET_CRYPTO_DATA,
@@ -43,11 +43,11 @@ export const showCryptoData = (id) => async dispatch => {
 
     // const getPriceHistory = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=1`)
     const getPriceHistory = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=1609515825&to=1618933425`)
-    console.log(payload)
+        // console.log(payload)
 
     dispatch({
         type: actionTypes.SHOW_CRYPTO_DATA_DISPLAY,
-        newSelectedCryptoDisplay: { id: payload.data.id, name: payload.data.name, data: payload.data, priceHistory: getPriceHistory.data.prices  },
+        newSelectedCryptoDisplay: { id: payload.data.id, name: payload.data.name, data: payload.data, priceHistory: getPriceHistory.data.prices },
 
     })
 }
@@ -60,11 +60,11 @@ export const getCryptoPriceHistory = (id) => async dispatch => {
     const getPriceHistory = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=1609515825&to=1618933425`)
     const payload = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`)
 
-    console.log(payload)
+    // console.log(payload)
     dispatch({
         type: actionTypes.GET_CRYPTO_PRICE_HISTORY,
         // newSelectedCryptoDisplay: { priceHistory: payload }
-        newSelectedCryptoDisplay: { id:payload.data.id, name: payload.data.name, data: payload.data,  priceHistory: getPriceHistory.data.prices }
+        newSelectedCryptoDisplay: { id: payload.data.id, name: payload.data.name, data: payload.data, priceHistory: getPriceHistory.data.prices }
     })
 
 }

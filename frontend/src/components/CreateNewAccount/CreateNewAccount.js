@@ -76,7 +76,7 @@ import validator from 'validator'
 return (
     <div>
 
-        <span className="create__account__button" onClick={handleClickOpen}>Create New Account</span>
+        <span className="create__account__button" onClick={handleClickOpen}>Create New Account </span>
 
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth='xs'  aria-labelledby="form-dialog-title">
         

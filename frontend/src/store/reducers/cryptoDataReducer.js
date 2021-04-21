@@ -26,7 +26,7 @@ const cryptoDataReducer = (state = initialState, action) => {
         //     }
 
         case actionTypes.SET_CRYPTO_DATA:
-            console.log(action)
+            // console.log(action)
             return {
                 cryptoData: action.newCryptoDataArr,
                 // cryptoData: [...state.cryptoData, action.newCryptoDataArr],
@@ -40,8 +40,8 @@ const cryptoDataReducer = (state = initialState, action) => {
                 }
             }
         case actionTypes.SHOW_CRYPTO_DATA_DISPLAY:
-            console.log(action)
-                // state.cryptoData.map((value) => console.log(value))
+            // console.log(action)
+            // state.cryptoData.map((value) => console.log(value))
 
 
             return {
@@ -58,8 +58,8 @@ const cryptoDataReducer = (state = initialState, action) => {
             }
 
         case actionTypes.GET_CRYPTO_PRICE_HISTORY:
-            console.log(state)
-            console.log(action)
+            // console.log(state)
+            // console.log(action)
             return {
                 cryptoData: [...state.cryptoData],
                 // selectedCryptoDisplay: {...state.selectedCryptoDisplay, priceHistory: action.newSelectedCryptoDisplay.priceHistory }

@@ -13,7 +13,7 @@ const CryptoChart = (props) => {
 
     
     const prices =()=> props.selectedCryptoDisplay.priceHistory.map((price)=>{
-        console.log(price[1])
+
         return price[1]
     })
     const dates =()=> props.selectedCryptoDisplay.priceHistory.map((date)=>{
@@ -21,7 +21,7 @@ const CryptoChart = (props) => {
         return date[0]
     })
     
-    console.log(props)
+
     const chartRef = useRef()
     
             // props.getCryptoPriceHistory(props.selectedCryptoDisplay.name)
@@ -37,7 +37,7 @@ const CryptoChart = (props) => {
 //     return date[0]
 // })
 
-console.log(prices)
+
 
 
         if(chartRef && chartRef.current){

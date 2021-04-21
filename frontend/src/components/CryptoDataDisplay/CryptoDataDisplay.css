@@ -11,6 +11,7 @@
     /* grid-template-columns: 1fr% 1fr% 1fr%; */
     grid-template-rows: auto;
     border-radius: 15px;
+    /* background-color: rgb(246, 255, 243); */
     background-color: rgb(235, 236, 255);
     /* border: 7px double black; */
     border: 6px outset white;
