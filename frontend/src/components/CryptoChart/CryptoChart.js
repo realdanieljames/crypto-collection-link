@@ -17,8 +17,12 @@ const CryptoChart = (props) => {
         return price[1]
     })
     const dates =()=> props.selectedCryptoDisplay.priceHistory.map((date)=>{
+        const milliseconds = date[0] * 1000
+        const dateObject = new Date(milliseconds)
+        const humanDateFormat = dateObject.toLocaleString()
         
-        return date[0]
+        // return date[0]
+        return humanDateFormat
     })
     
 
@@ -86,7 +90,7 @@ const CryptoChart = (props) => {
     },[])
   return (
     <div className="crypto__data__display__chart">
-      <canvas id="myChart" width='250' height="100" ref={chartRef}></canvas>
+      <canvas id="myChart" width='300' height="160" ref={chartRef}></canvas>
     </div>
   );
 };

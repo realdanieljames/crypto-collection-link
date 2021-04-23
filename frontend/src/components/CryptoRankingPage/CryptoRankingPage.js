@@ -5,7 +5,7 @@ import {
 setCryptoData,
 // addCryptoData,
 showCryptoData,
-getCryptoPriceHistory
+getCryptoPriceHistory,getAllUsers
 } from "../../store/actions/actionCreators";
 import CryptoDataDisplay from "../CryptoDataDisplay/CryptoDataDisplay";
 import cryptoDataReducer from "../../store/reducers/cryptoDataReducer";
@@ -18,6 +18,7 @@ useEffect(() => {
     
     
     props.setCryptoData();
+    props.getAllUsers()
 },[]);
 
 // console.log(props)
@@ -33,7 +34,9 @@ return (
         <div key={cryptocurrency.id} className="coin__card" onClick={()=> {
             
             props.showCryptoData(cryptocurrency.id)
-            props.getCryptoPriceHistory(cryptocurrency.id)
+            // props.getCryptoPriceHistory(cryptocurrency.id)
+            // props.getAllUsers()
+
             }} >
             {/* <div className="favorite__icon"> {<StarOutlineOutlinedIcon/>}</div> */}
             {/* {<FavoriteBorderIcon/>} */}
@@ -77,14 +80,15 @@ return (
 const mapStateToProps = (state) => {
 return {
     cryptoData: state.cryptoData,
-    selectedCryptoDisplay: state.selectedCryptoDisplay
+    selectedCryptoDisplay: state.selectedCryptoDisplay,
+    userData: state.userData
 };
 };
 
 //===================================================================================//
 //===================================================================================//
 
-export default connect(mapStateToProps, { setCryptoData, showCryptoData,getCryptoPriceHistory })(
+export default connect(mapStateToProps, { setCryptoData, showCryptoData,getCryptoPriceHistory,getAllUsers })(
 CryptoRankingPage
 );
 // export default CryptoRankingPage;

@@ -32,11 +32,4 @@ function App(props) {
   );
 }
 
-// const mapStateToProps = (state)=> {
-//   return {
-//     cryptoData:  state.cryptoData
-//   }
-// }
-
-// export default connect(mapStateToProps, {setCryptoData, addCryptoData})(App);
 export default App 

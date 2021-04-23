@@ -20,7 +20,7 @@ import Chart from "../CryptoChart/CryptoChart";
 const CryptoDataDisplay = (props) => {
   useEffect(() => {
     // props.showCryptoData(props.selectedCryptoDisplay);
-    props.showCryptoData();
+    props.showCryptoData(); 
   }, []);
 
   // console.log(props);

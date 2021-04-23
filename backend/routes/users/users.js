@@ -11,6 +11,8 @@ router.post('/register', userController.createNewAccount);
 
 router.post('/login', userController.login);
 
+router.get('/get-users', userController.getAllUsers)
+
 router.post('/getData', userController.getData)
 
 router.post('/postData', userController.postData)

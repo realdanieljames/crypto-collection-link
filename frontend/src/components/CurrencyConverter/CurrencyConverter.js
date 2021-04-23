@@ -49,7 +49,9 @@ return (
 
         {props.cryptoData.map((value) => {
         return (
-            <option value={value.id}>
+            <option 
+            key={value.id}
+            value={value.id}>
             {value.name} ({value.symbol.toUpperCase()})
             </option>
         );

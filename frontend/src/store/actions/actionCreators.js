@@ -18,6 +18,7 @@ export const setCryptoData = () => async dispatch => {
         type: actionTypes.SET_CRYPTO_DATA,
         newCryptoDataArr: payload.data,
         newSelectedCryptoDisplay: { id: getStartUpData.data.id, name: 'Bitcoin', data: getStartUpData.data, priceHistory: getPriceHistory.data.prices },
+
         // newSelectedCryptoDisplay: { id: 'bitcoin', name: 'Bitcoin', data: getStartUpData.data, priceHistory: getPriceHistory.data.prices },
     })
 
@@ -65,6 +66,21 @@ export const getCryptoPriceHistory = (id) => async dispatch => {
         type: actionTypes.GET_CRYPTO_PRICE_HISTORY,
         // newSelectedCryptoDisplay: { priceHistory: payload }
         newSelectedCryptoDisplay: { id: payload.data.id, name: payload.data.name, data: payload.data, priceHistory: getPriceHistory.data.prices }
+    })
+
+}
+
+
+//===================================================================================//
+//===================================================================================//
+export const getAllUsers = () => async dispatch => {
+    const allUsers = await axios.get("http://localhost:3001/api/users/get-users")
+
+
+    dispatch({
+        type: actionTypes.GET_ALL_USERS,
+        allUsersArray: allUsers.data.allUsers
+
     })
 
 }

@@ -3,6 +3,13 @@ const moment = require('moment');
 const now = moment();
 
 var UserSchema = new mongoose.Schema({
+    id: {
+        type: String,
+        trim: true,
+        unique: true,
+        required: true,
+        default: '',
+    },
     username: {
         type: String,
         trim: true,
@@ -17,25 +24,13 @@ var UserSchema = new mongoose.Schema({
         require: true,
         default: ''
     },
-    cryptoRanks: {
-        type: Array,
-        trim: true,
-        default: []
-    },
-
-    calories: {
-        type: Number,
-        trim: true,
-        default: 0
-
-    },
-
-    food: {
-        type: Array,
-        trim: true,
-        default: []
-    },
     password: { type: String, default: '' },
+    userCollection: {
+        type: Array,
+        trim: true,
+        default: []
+    },
+
     timestamp: { type: String, default: now.format('dddd, MMMM Do YYYY, h:mm:ss a') }
 });
 
