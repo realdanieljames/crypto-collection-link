@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./CryptoDataDisplay.css";
 import { connect } from "react-redux";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarIcon from '@material-ui/icons/Star';
 import {
   setCryptoData,
   // addCryptoData,
@@ -30,7 +31,7 @@ const CryptoDataDisplay = (props) => {
       {props.cryptoData.map((cryptocurrency) => {
         if (cryptocurrency.id === props.selectedCryptoDisplay.id) {
           // console.log(cryptocurrency);
-          // console.log(props.selectedCryptoDisplay.id);
+          console.log(props.selectedCryptoDisplay);
 
           // let selectedCryptoData = props.selectedCryptoDisplay.data;
 

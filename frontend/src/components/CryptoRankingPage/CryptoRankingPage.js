@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./CryptoRankingPage.css";
 import { connect } from "react-redux";
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarIcon from '@material-ui/icons/Star';
 import {
 setCryptoData,
 // addCryptoData,
@@ -22,6 +23,7 @@ useEffect(() => {
     props.getAllUsers()
 },[]);
 
+const [collect, setCollect]=useState(false)
 // console.log(props)
 //===================================================================================//
 //===================================================================================//
@@ -40,7 +42,7 @@ return (
             // props.getAllUsers()
 
             }} >
-            <div className="favorite__icon" alt="Add To Collection"> {<StarBorderIcon/>}</div>
+            <button className="favorite__icon" alt="Add To Collection"> {!collect?<StarBorderIcon onClick={()=> setCollect(false)}/>:<StarIcon onClick={()=> setCollect(true)} />}</button>
             {/* {<FavoriteBorderIcon/>} */}
             <div className="card__rank">
             {" "}

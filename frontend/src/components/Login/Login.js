@@ -111,10 +111,10 @@ const userToken = window.localStorage.jwtToken
   }
 const checkForToken =()=>{
 if(window.localStorage.getItem('jwtToken')){
-console.log('hter')
+// console.log('hter')
   let token = window.localStorage.getItem("jwtToken")
   let decoded = jwt_decode(token)
-  console.log(decoded.email)
+  // console.log(decoded.email)
   // return window.localStorage.getItem('jwtToken')
   return decoded.email
   // window.localStorage.getItem('jwtToken')?window.localStorage.jwtToken.email: 'Login'

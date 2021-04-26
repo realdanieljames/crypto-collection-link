@@ -15,15 +15,22 @@ const Search = (props) => {
   const searchRef = useRef();
   console.log(props);
 
+
+  let cryptocurrenciesObj={}
+  let peopleObj={}
+
   //===================================================================================//
   //===================================================================================//
   const cryptos = props.cryptoData.map((value) => {
-    const newObj = {
-      value: value.id,
-      label: `${value.name} (${value.symbol.toUpperCase()})`,
-    };
-    return newObj;
-  });
+      const newObj = {
+        value: value.id,
+        label: `${value.name} (${value.symbol.toUpperCase()})`,
+      };
+      cryptocurrenciesObj = newObj
+      return cryptocurrenciesObj;
+    });
+  
+  console.log(cryptocurrenciesObj)
   //===================================================================================//
   //===================================================================================//
 
@@ -32,13 +39,12 @@ const Search = (props) => {
       value: value.id,
       label: `@${value.username}`,
     };
-    return newObj;
+    peopleObj = newObj
+    
+    return peopleObj;
   });
   //===================================================================================//
   //===================================================================================//
-
-  let cryptocurrenciesObj={}
-  let peopleObj={}
 
 
   const searchFilter = (id) => { 
@@ -50,8 +56,7 @@ const Search = (props) => {
 
       if (searchOptions.label === "Cryptocurrencies") {
         cryptocurrencies = searchOptions;
-        console.log(searchRef.current.state.value === null ? 'bitcoin': searchRef.current.state.value.value)
-        console.log(cryptocurrencies)
+
 
         return cryptocurrencies;
       }
@@ -79,8 +84,6 @@ const Search = (props) => {
 
 
 
-
-
   //===================================================================================//
   //===================================================================================//
 
@@ -93,6 +96,7 @@ const Search = (props) => {
     {
       label: "Cryptocurrencies",
       options: cryptos,
+      // options: cryptocurrenciesObj,
     },
   ];
   //===================================================================================//
@@ -139,20 +143,14 @@ const Search = (props) => {
 
   return (
     <Select
-      // defaultValue={colourOptions[1]}
-      // defaultValue={{ label: "Search" }}
-      options={groupedOptions}
-      // options={cryptos}
-      formatGroupLabel={formatGroupLabel}
-      onChange={() => {
 
-        const currentValue = searchRef.current
-        currentValue.state.menuIsOpen = false
-        console.log(currentValue);
-        console.log(searchRef.current.state);
-        // searchFilter();
-        // props.showCryptoData(searchRef.current.props.options.value)
-        // console.log(cryptos)
+      options={groupedOptions}
+
+      formatGroupLabel={formatGroupLabel}
+      onChange={(e) => {
+
+    console.log(e.value)
+    props.showCryptoData(e.value)
       }}
       ref={searchRef}
     />
