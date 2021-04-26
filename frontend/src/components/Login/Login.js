@@ -1,6 +1,8 @@
 import {useState} from 'react'
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import axios from 'axios'
+import jwt_decode from "jwt-decode";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -34,6 +36,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 //     //  })
 //  }
 
+
 //=============================================================================================================//
 //=============================================================================================================//
 
@@ -58,7 +61,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
   //=============================================================================================================//
   //=============================================================================================================//
-
+  const userToken = window.localStorage.jwtToken
+  // let decodedJwtToken =  jwt_decode(window.localStorage.getItem("jwtToken"))
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -66,6 +70,11 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
     console.log('hello');
     
+// console.log(window.localStorage)
+const userToken = window.localStorage.jwtToken
+// const decodedJwtToken =  jwt_decode(userToken)
+
+// console.log(decodedJwtToken)
 
 
     try {
@@ -79,12 +88,15 @@ import DialogTitle from '@material-ui/core/DialogTitle';
         })
         console.log(success)
 
-        // console.log(success.data.token);
+        console.log(success.data.token);
+        console.log(jwt_decode(success.data.token))
         window.localStorage.setItem("jwtToken", success.data.token)
+        const userToken = window.localStorage.jwtToken
+        // const decodedJwtToken =  jwt_decode(userToken)
         // props.history.push('/rankings')
     } catch (error) {
 
-        console.log(error);
+        console.log({message: "please enter email and password" , error: error});
         // setErrorMessage(true)
     } 
     // return await loginUser({
@@ -97,13 +109,30 @@ import DialogTitle from '@material-ui/core/DialogTitle';
     // await axios.post('127.0.0.1:8080/api/signin', signin)
 
   }
+const checkForToken =()=>{
+if(window.localStorage.getItem('jwtToken')){
+console.log('hter')
+  let token = window.localStorage.getItem("jwtToken")
+  let decoded = jwt_decode(token)
+  console.log(decoded.email)
+  // return window.localStorage.getItem('jwtToken')
+  return decoded.email
+  // window.localStorage.getItem('jwtToken')?window.localStorage.jwtToken.email: 'Login'
+}
+else return 'Login'
+}
+
+// console.log(checkForToken())
 //=============================================================================================================//
 //=============================================================================================================//
 
 return (
     <div>
 
-    <span className="login__button" onClick={handleClickOpen}>Login</span>
+    {/* <span className="login__button" onClick={handleClickOpen}>Login</span> */}
+
+    {/* <span className="login__button" onClick={handleClickOpen}>{userToken?window.localStorage.jwtToken.email: 'Login'}</span> */}
+    <span className="login__button" onClick={handleClickOpen}>{checkForToken()}</span>
  
       <Dialog open={open} onClose={handleClose}  aria-labelledby="form-dialog-title"
        fullWidth={true} maxWidth='xs'
@@ -118,7 +147,7 @@ return (
 
           </DialogContentText> */}
 
-          <TextField
+          {/* <TextField
             variant='outlined'
             margin="dense"
             id="username"
@@ -126,10 +155,10 @@ return (
             type="email"
             fullWidth
             onChange={e => setUserName(e.target.value)}
-          />
+          /> */}
 
           {/* <hr/> */}
-          {/* <TextField
+          <TextField
             variant='outlined'
             margin="dense"
             id="email"
@@ -137,7 +166,7 @@ return (
             type="email"
             fullWidth
             onChange={e => setEmail(e.target.value)}
-          /> */}
+          />
           {/* <hr/> */}
           <TextField
             variant='outlined'

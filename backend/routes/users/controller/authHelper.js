@@ -13,7 +13,8 @@ async function createUser(user) {
         id: uuidv4(),
         username: user.username,
         email: user.email,
-        password: user.password
+        password: user.password,
+
     });
     return newUser;
 }
@@ -48,8 +49,10 @@ async function errorHandler(error) {
 //===================================================================================//
 //===================================================================================//
 async function findOneUser(email) {
+    console.log(email)
     try {
         let foundUser = await User.findOne({ email });
+        console.log(foundUser)
         if (!foundUser) {
             return 404;
         }
@@ -57,6 +60,7 @@ async function findOneUser(email) {
     } catch (error) {
         return error;
     }
+
 }
 
 

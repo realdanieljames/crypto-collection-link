@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./CryptoRankingPage.css";
 import { connect } from "react-redux";
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 import {
 setCryptoData,
 // addCryptoData,
@@ -25,6 +26,7 @@ useEffect(() => {
 //===================================================================================//
 //===================================================================================//
 return (
+    
     <div className="crypto__ranking__container">
     <div className="coin__info">
         {/* <div className="search__length"> showing Top {coinsPerPage} of Page {pageNumber} </div>  */}
@@ -38,7 +40,7 @@ return (
             // props.getAllUsers()
 
             }} >
-            {/* <div className="favorite__icon"> {<StarOutlineOutlinedIcon/>}</div> */}
+            <div className="favorite__icon" alt="Add To Collection"> {<StarBorderIcon/>}</div>
             {/* {<FavoriteBorderIcon/>} */}
             <div className="card__rank">
             {" "}

@@ -14,6 +14,7 @@ const Search = (props) => {
 
   const searchRef = useRef();
   console.log(props);
+
   //===================================================================================//
   //===================================================================================//
   const cryptos = props.cryptoData.map((value) => {
@@ -41,7 +42,7 @@ const Search = (props) => {
 
 
   const searchFilter = (id) => { 
-    console.log(searchRef.current.state.value)
+    // console.log(searchRef.current.state.value)
     const dropdownSearchOptions = searchRef.current.props.options;
     let cryptocurrencies = {};
     let people = {};
@@ -73,7 +74,7 @@ const Search = (props) => {
   //===================================================================================//
   //===================================================================================//
   
-  console.log(cryptocurrenciesObj)
+
 
 
 
@@ -144,6 +145,11 @@ const Search = (props) => {
       // options={cryptos}
       formatGroupLabel={formatGroupLabel}
       onChange={() => {
+
+        const currentValue = searchRef.current
+        currentValue.state.menuIsOpen = false
+        console.log(currentValue);
+        console.log(searchRef.current.state);
         // searchFilter();
         // props.showCryptoData(searchRef.current.props.options.value)
         // console.log(cryptos)

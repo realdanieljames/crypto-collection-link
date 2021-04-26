@@ -37,9 +37,9 @@ const Navbar = () => {
 
       <div>
         <nav className="router__tabs">
-          <Link className="link" to="/collection">
+          <Link className="link" to="/profile">
             <div className="my__collection__tab">
-              <span className="tab__text"> My Collection</span>
+              <span className="tab__text"> My Profile</span>
             </div>
           </Link>
 

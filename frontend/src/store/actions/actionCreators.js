@@ -10,7 +10,7 @@ export const setCryptoData = () => async dispatch => {
     // const payload = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=24h");
     const getStartUpData = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin`)
         // console.log(getStartUpData)
-    const getPriceHistory = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1609515825&to=1618933425`)
+    const getPriceHistory = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1609515825&to=1619363400`)
 
     // console.log(getStartUpData)
 
@@ -43,7 +43,7 @@ export const showCryptoData = (id) => async dispatch => {
     const payload = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
 
     // const getPriceHistory = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=1`)
-    const getPriceHistory = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=1609515825&to=1618933425`)
+    const getPriceHistory = await axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=1609515825&to=1619363400`)
         // console.log(payload)
 
     dispatch({

@@ -1,5 +1,6 @@
 import {useState, useRef} from 'react'
 import axios from 'axios';
+import jwt_decode from "jwt-decode";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -12,7 +13,7 @@ import validator from 'validator'
 
 
 
- const CreateNewAccount = () => {
+ const CreateNewAccount = (props) => {
   const [open, setOpen] = useState(false);
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -35,10 +36,16 @@ import validator from 'validator'
     setOpen(false);
   };
 
+  const userToken = window.localStorage.jwtToken
+// const decodedJwtToken =  jwt_decode(userToken)
+
+
 
   //=============================================================================================================//
   //=============================================================================================================//
  const createAccountSubmitButton = async (e)=>{
+
+
      
     e.preventDefault()
     console.log(e)
@@ -54,12 +61,12 @@ import validator from 'validator'
         console.log(emailRef.current.value)
         
         let success = await axios.post("http://localhost:3001/api/users/register", {
-        username: username,
-          email: email,
-          password: password,
-        //   email: emailRef.current.value,
-        //   password: passwordRef.current.value,
-        //   username: userNameRef.current.value,
+        // username: username,
+        //   email: email,
+        //   password: password,
+            username: userNameRef.current.value,
+          email: emailRef.current.value,
+          password: passwordRef.current.value,
       })
         console.log(success);
         //  if(success.status === 200){
@@ -71,12 +78,18 @@ import validator from 'validator'
 }
 
 
+const logout = async (e)=>{
+  e.preventDefault()
+  window.localStorage.removeItem("jwtToken")
+  console.log(props)
 
+}
 
 return (
     <div>
 
-        <span className="create__account__button" onClick={handleClickOpen}>Create New Account </span>
+        <span className="create__account__button" onClick={userToken? logout:handleClickOpen}>{userToken?'Logout': 'Create New Account'} </span>
+        {/* <span className="create__account__button" onClick={handleClickOpen}>Create New Account </span> */}
 
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth='xs'  aria-labelledby="form-dialog-title">
         

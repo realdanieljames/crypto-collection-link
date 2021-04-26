@@ -20,7 +20,7 @@ const CryptoChart = (props) => {
         const milliseconds = date[0] * 1000
         const dateObject = new Date(milliseconds)
         const humanDateFormat = dateObject.toLocaleString()
-        
+         
         // return date[0]
         return humanDateFormat
     })

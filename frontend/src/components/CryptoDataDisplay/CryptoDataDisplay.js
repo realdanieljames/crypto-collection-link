@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./CryptoDataDisplay.css";
 import { connect } from "react-redux";
-
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 import {
   setCryptoData,
   // addCryptoData,
@@ -32,7 +32,7 @@ const CryptoDataDisplay = (props) => {
           // console.log(cryptocurrency);
           // console.log(props.selectedCryptoDisplay.id);
 
-          let selectedCryptoData = props.selectedCryptoDisplay.data;
+          // let selectedCryptoData = props.selectedCryptoDisplay.data;
 
           return (
             <div
@@ -54,6 +54,7 @@ const CryptoDataDisplay = (props) => {
                 <p className="crypto__data__display__symbol">
                   {/* {selectedCryptoData.symbol.toUpperCase()} */}
                   {cryptocurrency.symbol.toUpperCase()}
+                  <div className="favorite__icon"> {<StarBorderIcon/>}</div>
                 </p>
 
                 <p className="crypto__data__display__rank">

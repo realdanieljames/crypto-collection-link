@@ -21,7 +21,7 @@ module.exports = {
     createNewAccount: async(req, res) => {
         console.log('gree')
         try {
-            console.log(res)
+
             let newUser = await createUser(req.body);
             let hashedPassword = await hashPassword(newUser.password);
             newUser.password = hashedPassword;
@@ -40,6 +40,7 @@ module.exports = {
     //===================================================================================//
     //===================================================================================//
     login: async(req, res) => {
+        console.log(req.body)
         try {
             let foundUser = await findOneUser(req.body.email);
             if (foundUser === 404) {
