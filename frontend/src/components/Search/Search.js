@@ -149,8 +149,11 @@ const Search = (props) => {
       formatGroupLabel={formatGroupLabel}
       onChange={(e) => {
 
-    console.log(e.value)
-    props.showCryptoData(e.value)
+        e.label[0]==='@' ?
+        console.log('hjd')
+        // showUserProfile(e.value)
+:
+  props.showCryptoData(e.value)
       }}
       ref={searchRef}
     />
