@@ -11,6 +11,7 @@ const initialState = {
         priceHistory: {}
     },
     userData: [],
+    selectedUser: {}
 
 }
 
@@ -90,6 +91,19 @@ const cryptoDataReducer = (state = initialState, action) => {
                 userData: action.allUsersArray
             }
 
+
+            //===================================================================================//
+            //===================================================================================//
+
+
+
+
+        case actionTypes.GET_USER_BY_ID:
+            console.log(action)
+            return {
+                ...state,
+                selectedUser: action.targetedUserObj
+            }
 
             //===================================================================================//
             //===================================================================================//

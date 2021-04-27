@@ -75,7 +75,7 @@ export const getCryptoPriceHistory = (id) => async dispatch => {
 //===================================================================================//
 export const getAllUsers = () => async dispatch => {
     const allUsers = await axios.get("http://localhost:3001/api/users/get-users")
-
+    console.log(allUsers)
 
     dispatch({
         type: actionTypes.GET_ALL_USERS,
@@ -83,4 +83,17 @@ export const getAllUsers = () => async dispatch => {
 
     })
 
+}
+
+
+//===================================================================================//
+//===================================================================================//
+export const showUserProfile = (id) => async dispatch => {
+    const targetedUser = await axios.get(`http://localhost:3001/api/users/${id}`)
+    console.log(targetedUser.data.foundUser)
+
+    dispatch({
+        type: actionTypes.GET_USER_BY_ID,
+        newSelectedUser: targetedUser.data.foundUser
+    })
 }

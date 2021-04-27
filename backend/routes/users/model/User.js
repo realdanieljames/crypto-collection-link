@@ -3,13 +3,13 @@ const moment = require('moment');
 const now = moment();
 
 var UserSchema = new mongoose.Schema({
-    id: {
-        type: String,
-        trim: true,
-        unique: true,
-        required: true,
-        default: '',
-    },
+    // id: {
+    //     type: String,
+    //     trim: true,
+    //     unique: true,
+    //     required: true,
+    //     default: '',
+    // },
     username: {
         type: String,
         trim: true,

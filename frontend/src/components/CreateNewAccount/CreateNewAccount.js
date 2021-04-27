@@ -49,29 +49,30 @@ import validator from 'validator'
      
     e.preventDefault()
     console.log(e)
-    // if(!validator.isEmail(emailRef.current.value)){
-    //     setEmailError(true)
-    //     return
-    // }else {
-    //     setEmailError(false)
-    // }
+    if(!validator.isEmail(emailRef.current.value)){
+        setEmailError(true)
+        return
+    }else {
+        setEmailError(false)
+    }
 
     try {
-        console.log('hello');
-        console.log(emailRef.current.value)
+        // console.log('hello');
+        // console.log(emailRef.current.value)
         
         let success = await axios.post("http://localhost:3001/api/users/register", {
         // username: username,
         //   email: email,
         //   password: password,
-            username: userNameRef.current.value,
+          username: userNameRef.current.value,
           email: emailRef.current.value,
           password: passwordRef.current.value,
       })
+      window.localStorage.setItem("jwtToken", success.data.token)
         console.log(success);
-        //  if(success.status === 200){
-        //      alert('Success, please proceed to login.')
-        //  }
+         if(success.status === 200){
+             alert(`${userNameRef.current.value} Successfully Signed Up`)
+         }
     } catch (error) {
         console.log(error);
     }
@@ -85,10 +86,24 @@ const logout = async (e)=>{
 
 }
 
+const checkForToken =()=>{
+  if(window.localStorage.getItem('jwtToken')){
+  // console.log('hter')
+    let token = window.localStorage.getItem("jwtToken")
+    let decoded = jwt_decode(token)
+    // console.log(decoded.email)
+    // return window.localStorage.getItem('jwtToken')
+    return 'Logout'
+    // window.localStorage.getItem('jwtToken')?window.localStorage.jwtToken.email: 'Login'
+  }
+  else return 'Create New Account'
+  }
+
 return (
     <div>
 
-        <span className="create__account__button" onClick={userToken? logout:handleClickOpen}>{userToken?'Logout': 'Create New Account'} </span>
+        {/* <span className="create__account__button" onClick={userToken? logout:handleClickOpen}>{userToken?'Logout': 'Create New Account'} </span> */}
+        <span className="create__account__button" onClick={userToken? logout:handleClickOpen}>{checkForToken()} </span>
         {/* <span className="create__account__button" onClick={handleClickOpen}>Create New Account </span> */}
 
       <Dialog open={open} onClose={handleClose} fullWidth={true} maxWidth='xs'  aria-labelledby="form-dialog-title">

@@ -13,7 +13,7 @@ router.post('/login', userController.login);
 
 router.get('/get-users', userController.getAllUsers)
 
-router.post('/getData', userController.getData)
+router.get('/:userId', userController.getUserById)
 
 router.post('/postData', userController.postData)
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import "./Search.css";
 import { connect } from "react-redux";
-import { setCryptoData, getAllUsers ,showCryptoData} from "../../store/actions/actionCreators";
+import { setCryptoData, getAllUsers ,showCryptoData,showUserProfile} from "../../store/actions/actionCreators";
 
 import Select from "react-select";
-import { colourOptions } from "./docs/data";
+// import { colourOptions } from "./docs/data";
 
 const Search = (props) => {
   useEffect(()=>{
@@ -35,8 +35,9 @@ const Search = (props) => {
   //===================================================================================//
 
   const users = props.userData.map((value) => {
+    console.log(value)
     const newObj = {
-      value: value.id,
+      value: value._id,
       label: `@${value.username}`,
     };
     peopleObj = newObj
@@ -78,14 +79,7 @@ const Search = (props) => {
   };
   //===================================================================================//
   //===================================================================================//
-  
 
-
-
-
-
-  //===================================================================================//
-  //===================================================================================//
 
   const groupedOptions = [
     {
@@ -149,11 +143,10 @@ const Search = (props) => {
       formatGroupLabel={formatGroupLabel}
       onChange={(e) => {
 
-        e.label[0]==='@' ?
-        console.log('hjd')
+        e.label[0]==='@' ? props.showUserProfile(e.value) :props.showCryptoData(e.value)
+      
         // showUserProfile(e.value)
-:
-  props.showCryptoData(e.value)
+
       }}
       ref={searchRef}
     />
@@ -170,4 +163,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setCryptoData, getAllUsers,showCryptoData })(Search);
+export default connect(mapStateToProps, { setCryptoData, getAllUsers,showCryptoData,showUserProfile })(Search);

@@ -40,9 +40,10 @@ module.exports = {
     //===================================================================================//
     //===================================================================================//
     login: async(req, res) => {
-        console.log(req.body)
+        // console.log(req.body)
         try {
             let foundUser = await findOneUser(req.body.email);
+            console.log(req.body)
             if (foundUser === 404) {
                 throw {
                     status: 500,
@@ -75,7 +76,8 @@ module.exports = {
     getAllUsers: async(req, res) => {
 
         const allUsers = await UserSchema.find({})
-        console.log(allUsers)
+            // console.log(allUsers)
+            // console.log(res)
             // return allUsers
         res.status(200)
             .json({ confirmation: 'success', allUsers })
@@ -83,36 +85,21 @@ module.exports = {
 
 
 
-
-
-
-
-
-
     //===================================================================================//
     //===================================================================================//
-    getData: async(req, res) => {
-
-
-        console.log(req.body);
+    getUserById: async(req, res) => {
+        console.log(req.params)
+            // res.send(' wurce')
         try {
-            let foundUser = await findOneUser(req.body.email)
-
-            console.log(foundUser);
-
-            res.json({ data: foundUser })
-
-
-
-
-
+            const foundUser = await UserSchema.findById(req.params.userId);
+            res.status(200)
+                .json({
+                    confirmation: 'success'
+                    ,foundUser
+                })
         } catch (error) {
-            console.log(error);
-
+            res.json({ message: error })
         }
-
-
-
     },
 
     //===================================================================================//

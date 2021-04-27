@@ -61,7 +61,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
   //=============================================================================================================//
   //=============================================================================================================//
-  const userToken = window.localStorage.jwtToken
+  // const userToken = window.localStorage.jwtToken
   // let decodedJwtToken =  jwt_decode(window.localStorage.getItem("jwtToken"))
 
   const handleSubmit = async e => {
@@ -70,11 +70,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
     console.log('hello');
     
-// console.log(window.localStorage)
-const userToken = window.localStorage.jwtToken
-// const decodedJwtToken =  jwt_decode(userToken)
-
-// console.log(decodedJwtToken)
 
 
     try {
@@ -88,10 +83,10 @@ const userToken = window.localStorage.jwtToken
         })
         console.log(success)
 
-        console.log(success.data.token);
-        console.log(jwt_decode(success.data.token))
+        // console.log(success.data.token);
+        // console.log(jwt_decode(success.data.token))
         window.localStorage.setItem("jwtToken", success.data.token)
-        const userToken = window.localStorage.jwtToken
+        // const userToken = window.localStorage.jwtToken
         // const decodedJwtToken =  jwt_decode(userToken)
         // props.history.push('/rankings')
     } catch (error) {
@@ -99,14 +94,7 @@ const userToken = window.localStorage.jwtToken
         console.log({message: "please enter email and password" , error: error});
         // setErrorMessage(true)
     } 
-    // return await loginUser({
-    //   username,
-    //   email,
-    //   password
-    // }
-    // );
-    // setToken(token);
-    // await axios.post('127.0.0.1:8080/api/signin', signin)
+  
 
   }
 const checkForToken =()=>{

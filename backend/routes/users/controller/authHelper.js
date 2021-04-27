@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken');
 
 async function createUser(user) {
     let newUser = await new User({
-        id: uuidv4(),
+        // id: uuidv4(),
         username: user.username,
         email: user.email,
         password: user.password,
@@ -49,7 +49,7 @@ async function errorHandler(error) {
 //===================================================================================//
 //===================================================================================//
 async function findOneUser(email) {
-    console.log(email)
+    // console.log(email)
     try {
         let foundUser = await User.findOne({ email });
         console.log(foundUser)
@@ -95,7 +95,8 @@ async function createJwtToken(user) {
         email: user.email,
         username: user.username
     }
-    let jwtToken = await jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: 3600 });
+    let jwtToken = await jwt.sign(payload, process.env.SECRET_KEY);
+    // let jwtToken = await jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: 3600 });
     return jwtToken;
 }
 
