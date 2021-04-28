@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react'
+import {useState, useRef, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
@@ -23,9 +23,10 @@ import validator from 'validator'
   const [emailError, setEmailError] = useState(false)
 
 
-  const [username, setUserName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+
+  // const [username, setUserName] = useState();
+  // const [email, setEmail] = useState();
+  // const [password, setPassword] = useState();
 
   //=============================================================================================================//
   //=============================================================================================================//
@@ -46,10 +47,7 @@ import validator from 'validator'
   //=============================================================================================================//
   //=============================================================================================================//
  const createAccountSubmitButton = async (e)=>{
-
-
-     
-    e.preventDefault()
+    // e.preventDefault()
     console.log(e)
     if(!validator.isEmail(emailRef.current.value)){
         setEmailError(true)
@@ -74,21 +72,33 @@ import validator from 'validator'
       window.localStorage.setItem("jwtToken", success.data.token)
         console.log(success);
          if(success.status === 200){
-             alert(`${userNameRef.current.value} Successfully Signed Up`)
+             alert(`${userNameRef.current.value} Successfully Created an Account`)
+             handleClose()
          }
     } catch (error) {
         console.log(error);
+        if(error){
+          alert(`There was an error in input fields, please check Username, Email ,and Password then Try Again`)
+      }
     }
 }
 
 
+  //=============================================================================================================//
+  //=============================================================================================================//
 const logout = async (e)=>{
   // e.preventDefault()
-  window.localStorage.removeItem("jwtToken")
+window.localStorage.removeItem("jwtToken")  
+
+  alert(` Successfully Logged OUT`)
+  
   console.log(props)
 
 }
 
+
+  //=============================================================================================================//
+  //=============================================================================================================//
 const checkForToken =()=>{
   if(window.localStorage.getItem('jwtToken')){
   // console.log('hter')
@@ -102,6 +112,9 @@ const checkForToken =()=>{
   else return 'Create New Account'
   }
 
+
+  //=============================================================================================================//
+  //=============================================================================================================//
 return (
     <div>
 
@@ -185,7 +198,7 @@ return (
           {/* <button  style={{backgroundColor: 'yellow', fontSize:'15px', borderRadius:'7px', padding: '10px', color: 'black'}} onClick={handleClose} >
            {'<<<< ❌ Sign up Later'}
           </button> */}
-          <button style={{backgroundColor: 'yellow',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={createAccountSubmitButton} >
+          <button style={{backgroundColor: 'yellow',  fontSize:'15px', borderRadius:'7px', padding: '10px',  marginBottom: '20%'}} onClick={createAccountSubmitButton} >
             Create Account ➕
           </button>
         </DialogActions>

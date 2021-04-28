@@ -1,4 +1,5 @@
 import React, { useEffect, useState,useRef  } from "react";
+import jwt_decode from "jwt-decode";
 import "./CryptoRankingPage.css";
 import { connect } from "react-redux";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
@@ -9,6 +10,8 @@ setCryptoData,
 showCryptoData,
 getCryptoPriceHistory,
 getAllUsers,
+addCryptoDataToUserCollection,
+getUserById
 } from "../../store/actions/actionCreators";
 import CryptoDataDisplay from "../CryptoDataDisplay/CryptoDataDisplay";
 
@@ -35,15 +38,28 @@ const CryptoRankingPage = (props) => {
 const [collectAmount, setCollectAmount] = useState(false);
 console.log(props)
 
+
+
+
 //===================================================================================//
 //===================================================================================//
 
 
 const cryptoCardMenuOptions = (e)=>{
-    
-    setCollectAmount(true)
-    
-    collectAmount? setCollectAmount(false): setCollectAmount(true)
+    console.log(e)
+    if(window.localStorage.getItem('jwtToken')){
+
+          let token = window.localStorage.getItem("jwtToken")
+          let decoded = jwt_decode(token)
+          console.log(decoded.id)
+
+        props.addCryptoDataToUserCollection(decoded.id,e)
+        
+        console.log(props)
+        }
+        else alert(`Login to your account to add to your Collection`)
+
+
 
 }
 //===================================================================================//
@@ -70,7 +86,7 @@ return (
             <strong> ( {cryptocurrency.symbol.toUpperCase()} )</strong>{" "}
             </div>
             <div className="card__menu__options">
-            <select className="card__menu__select__option" ref={cardMenuRef} onChange={()=>cryptoCardMenuOptions()}>
+            <select className="card__menu__select__option" ref={cardMenuRef} onChange={()=>cryptoCardMenuOptions(cryptocurrency.id)}>
             {/* <select className="card__menu__select__option" ref={cardMenuRef} onChange={(e)=>{
                 console.log(e)
                 console.log(cryptocurrency.id)
@@ -138,5 +154,7 @@ setCryptoData,
 showCryptoData,
 getCryptoPriceHistory,
 getAllUsers,
+addCryptoDataToUserCollection,
+getUserById
 })(CryptoRankingPage);
 // export default CryptoRankingPage;

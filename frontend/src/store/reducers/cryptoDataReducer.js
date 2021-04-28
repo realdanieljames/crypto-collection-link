@@ -97,11 +97,25 @@ const cryptoDataReducer = (state = initialState, action) => {
 
         case actionTypes.GET_USER_BY_ID:
             console.log(action)
+            console.log(action.newSelectedUser)
             return {
                 ...state,
-                selectedUser: action.targetedUserObj
+                selectedUser: action.newSelectedUser
             }
 
+            //===================================================================================//
+            //===================================================================================//
+
+
+
+
+        case actionTypes.ADD_CRYPTO_DATA_TO_USER_COLLECTION:
+            console.log(action)
+            console.log(state)
+            return {
+                ...state,
+                user: action.user
+            }
             //===================================================================================//
             //===================================================================================//
         default:

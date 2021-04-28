@@ -7,7 +7,8 @@ const {
     createJwtToken
 } = require('./authHelper');
 
-const UserSchema = require('../../users/model/User')
+const UserSchema = require('../../users/model/User');
+
 
 //===================================================================================//
 //===================================================================================//
@@ -109,8 +110,27 @@ module.exports = {
     //===================================================================================//
 
 
-    saveCryptoToUserCollection: async(req, res) => {
-        console.log(res)
+    addCryptoDataToUserCollection: async(req, res) => {
+        console.log(req)
+        try {
+
+            let foundUser = await UserSchema.findOneAndUpdate({
+                _id: req.body._id
+            }, {
+                $addToSet: {
+                    userCollection: req.body.userCollection
+
+                }
+            })
+            res.status(200)
+                .json({
+                    confirmation: "added to collection",
+                    foundUser
+                })
+
+        } catch (err) {
+            console.log(err)
+        }
     },
 
     //===================================================================================//

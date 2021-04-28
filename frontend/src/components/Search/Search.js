@@ -1,16 +1,15 @@
 import React, { useEffect, useRef } from "react";
+import {BrowserRouter as Router, Route,Link } from "react-router-dom"
 import "./Search.css";
+import UserProfile from '../UserProfile/UserProfile'
 import { connect } from "react-redux";
-import { setCryptoData, getAllUsers ,showCryptoData,showUserProfile} from "../../store/actions/actionCreators";
+import { setCryptoData, getAllUsers ,showCryptoData,getUserById} from "../../store/actions/actionCreators";
 
 import Select from "react-select";
 // import { colourOptions } from "./docs/data";
 
 const Search = (props) => {
-  useEffect(()=>{
-    // props.getAllUsers()
-    searchFilter()
-  },[])
+
 
   const searchRef = useRef();
   console.log(props);
@@ -139,18 +138,22 @@ const Search = (props) => {
   return (
     <Select
 
-      options={groupedOptions}
+options={groupedOptions}
 
-      formatGroupLabel={formatGroupLabel}
-      onChange={(e) => {
+formatGroupLabel={formatGroupLabel}
+onChange={(e) => {
+  
+  // e.label[0]==='@' ? <Router> <Route exact path="/profile" component={UserProfile}/> </Router> :props.showCryptoData(e.value)
+  
+  {e.label[0]==='@' ?props.getUserById(e.value) :props.showCryptoData(e.value)}
+  
 
-        e.label[0]==='@' ? props.showUserProfile(e.value) :props.showCryptoData(e.value)
-      
-        // showUserProfile(e.value)
-
-      }}
-      ref={searchRef}
-    />
+  // {props.showUserProfile(e.value)}
+  
+  
+}}
+ref={searchRef}
+/>
   );
 };
 
@@ -164,4 +167,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setCryptoData, getAllUsers,showCryptoData,showUserProfile })(Search);
+export default connect(mapStateToProps, { setCryptoData, getAllUsers,showCryptoData,getUserById })(Search);

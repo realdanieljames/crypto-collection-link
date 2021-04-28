@@ -1,7 +1,12 @@
-import React from "react";
+import React,{useEffect} from "react";
 import './UserProfile.css'
 
-const UserProfile = () => {
+const UserProfile = (props) => {
+  console.log(props)
+
+  useEffect(()=>{
+    
+  })
   return (
     <div>
       <div>

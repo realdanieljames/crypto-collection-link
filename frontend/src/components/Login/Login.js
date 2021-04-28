@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import axios from 'axios'
@@ -48,6 +48,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+const emailRef = useRef()
+const passwordRef = useRef()
+
   //=============================================================================================================//
   //=============================================================================================================//
 
@@ -65,7 +68,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
   // let decodedJwtToken =  jwt_decode(window.localStorage.getItem("jwtToken"))
 
   const handleSubmit = async e => {
-    e.preventDefault();
+    // e.preventDefault();
 
 
     console.log('hello');
@@ -76,22 +79,29 @@ import DialogTitle from '@material-ui/core/DialogTitle';
         let success = await axios.post("http://localhost:3001/api/users/login", {
 
         // username: username,
-        email:email,
-        password:password
-            // email: emailRef.current.value,
-            // password: passwordRef.current.value,
+        // email:email,
+        // password:password,
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
         })
         console.log(success)
 
         // console.log(success.data.token);
         // console.log(jwt_decode(success.data.token))
         window.localStorage.setItem("jwtToken", success.data.token)
+        if(success.status === 200){
+          alert(`${emailRef.current.value} Successfully Logged In`)
+          handleClose()
+      }
         // const userToken = window.localStorage.jwtToken
         // const decodedJwtToken =  jwt_decode(userToken)
         // props.history.push('/rankings')
     } catch (error) {
 
         console.log({message: "please enter email and password" , error: error});
+        if(error){
+          alert(`${emailRef.current.value} does not exist, please retry with another email, or Create A New Account`)
+      }
         // setErrorMessage(true)
     } 
   
@@ -153,8 +163,9 @@ return (
             label="Email Address"
             type="email"
             fullWidth
-            onChange={e => setEmail(e.target.value)}
-          />
+            // onChange={e => setEmail(e.target.value)}
+            inputRef={emailRef}
+            />
           {/* <hr/> */}
           <TextField
             variant='outlined'
@@ -163,7 +174,8 @@ return (
             label="Password"
             type="email"
             fullWidth
-            onChange={e => setPassword(e.target.value)}
+            // onChange={e => setPassword(e.target.value)}
+            inputRef={passwordRef}
           />
         
 
@@ -183,7 +195,7 @@ return (
           {/* <button  style={{backgroundColor: 'gold', fontSize:'15px', borderRadius:'7px', padding: '10px'}} onClick={handleClose} >
           ❌ Cancel
           </button> */}
-          <button style={{backgroundColor: 'yellow',  fontSize:'15px', borderRadius:'7px', padding: '10px'}} 
+          <button style={{backgroundColor: 'yellow',  fontSize:'15px', borderRadius:'7px', padding: '10px', marginBottom: '20%'}} 
             onClick={handleSubmit} >
            Login 🔑 🚪
           </button>

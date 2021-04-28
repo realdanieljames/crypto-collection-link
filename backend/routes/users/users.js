@@ -15,7 +15,7 @@ router.get('/get-users', userController.getAllUsers)
 
 router.get('/:userId', userController.getUserById)
 
-router.post('/add-to-collection', userController.saveCryptoToUserCollection)
+router.post('/add-to-collection', userController.addCryptoDataToUserCollection)
 
 router.post('/postData', userController.postData)
 

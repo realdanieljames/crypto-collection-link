@@ -88,12 +88,29 @@ export const getAllUsers = () => async dispatch => {
 
 //===================================================================================//
 //===================================================================================//
-export const showUserProfile = (id) => async dispatch => {
+export const getUserById = (id) => async dispatch => {
     const targetedUser = await axios.get(`http://localhost:3001/api/users/${id}`)
     console.log(targetedUser.data.foundUser)
 
     dispatch({
         type: actionTypes.GET_USER_BY_ID,
         newSelectedUser: targetedUser.data.foundUser
+    })
+}
+
+
+//===================================================================================//
+//===================================================================================//
+
+export const addCryptoDataToUserCollection = (userId, cryptoId) => async dispatch => {
+
+    const user = await axios.post(`http://localhost:3001/api/users/add-to-collection`, {
+        _id: userId,
+        userCollection: cryptoId
+    })
+    console.log(user)
+    dispatch({
+        type: actionTypes.ADD_CRYPTO_DATA_TO_USER_COLLECTION,
+        user: user
     })
 }
