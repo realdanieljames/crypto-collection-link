@@ -22,6 +22,7 @@ const Search = (props) => {
   //===================================================================================//
   //===================================================================================//
   const cryptos = props.cryptoData.map((value) => {
+    // console.log(value)
       const newObj = {
         value: value.id,
         label: `${value.name} (${value.symbol.toUpperCase()})`,
@@ -30,12 +31,12 @@ const Search = (props) => {
       return cryptocurrenciesObj;
     });
   
-  console.log(cryptocurrenciesObj)
+  // console.log(cryptocurrenciesObj)
   //===================================================================================//
   //===================================================================================//
 
   const users = props.userData.map((value) => {
-    console.log(value)
+    // console.log(value)
     const newObj = {
       value: value._id,
       label: `@${value.username}`,

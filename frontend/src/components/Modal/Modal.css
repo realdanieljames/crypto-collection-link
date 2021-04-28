@@ -1,0 +1,22 @@
+.modal {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    background-color: rgba(0, 0, 0);
+    background-color: rgba(0, 0, 0, .4);
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid black;
+    width: 50%;
+    margin: 15% auto;
+}
+
+.button-group {
+    text-align: right;
+}

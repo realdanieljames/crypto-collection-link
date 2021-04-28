@@ -23,7 +23,7 @@
 .coin__card {
     /* background-color: white; */
     display: grid;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: 14% 18% 18%;
     /* grid-template-rows: 14% 10% 12% 23% 10% 18% 18%; */
     width: 100px;
@@ -45,6 +45,8 @@
 }
 
 .card__rank {
+    /* display: grid; */
+    /* grid-template-columns: 1fr 5fr; */
     /* grid-column: 1/3;
     grid-row: 1/2; */
     grid-column: 1/3;
@@ -59,13 +61,24 @@
     font-size: 10px;
     border-bottom: black solid 3px;
     /* text-align: center; */
-    padding-left: 20px;
+    padding-left: 2%;
 }
 
 .card__rank span {
-    margin-left: 900px;
+    /* margin-left: 900px; */
     /* color: blue;
     width: 50px; */
+}
+
+.card__menu__options {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    border-top-right-radius: 50px;
+    justify-self: end;
+}
+
+.card__menu__select__option {
+    width: 20px;
 }
 
 .favorite__icon {
@@ -103,7 +116,7 @@
 }
 
 .card__image {
-    grid-column: 2/3;
+    grid-column: 1/3;
     /* grid-row: 4/5; */
     grid-row: 3/4;
     justify-self: center;
@@ -119,7 +132,7 @@
 .card__name {
     /* align-self: end; */
     padding-top: 6px;
-    grid-column: 2/3;
+    grid-column: 1/3;
     grid-row: 5/6;
     font-weight: bold;
     justify-self: center;
@@ -132,12 +145,12 @@
 }
 
 .current__price {
-    grid-column: 2/3;
+    grid-column: 1/3;
     /* grid-row: 6/7; */
 }
 
 .card__price {
-    grid-column: 2/3;
+    grid-column: 1/3;
     grid-row: 6/7;
     /* color: rgb(52, 123, 7); */
     color: rgb(0, 53, 0);

@@ -26,8 +26,11 @@ module.exports = {
             let hashedPassword = await hashPassword(newUser.password);
             newUser.password = hashedPassword;
             let savedUser = await newUser.save();
+            // savedUser
+            let jwtToken = await createJwtToken(newUser);
             res.status(200).json({
-                message: 'Successfully signed up'
+                message: 'Successfully signed up',
+                token: jwtToken
             });
         } catch (error) {
             let errorMessage = await errorHandler(error);
@@ -94,12 +97,20 @@ module.exports = {
             const foundUser = await UserSchema.findById(req.params.userId);
             res.status(200)
                 .json({
-                    confirmation: 'success'
-                    ,foundUser
+                    confirmation: 'success',
+                    foundUser
                 })
         } catch (error) {
             res.json({ message: error })
         }
+    },
+
+    //===================================================================================//
+    //===================================================================================//
+
+
+    saveCryptoToUserCollection: async(req, res) => {
+        console.log(res)
     },
 
     //===================================================================================//

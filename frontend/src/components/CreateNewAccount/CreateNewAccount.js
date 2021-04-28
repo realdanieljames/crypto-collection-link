@@ -1,4 +1,5 @@
 import {useState, useRef} from 'react'
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import Button from '@material-ui/core/Button';
@@ -14,6 +15,7 @@ import validator from 'validator'
 
 
  const CreateNewAccount = (props) => {
+   console.log(props)
   const [open, setOpen] = useState(false);
   const emailRef = useRef()
   const passwordRef = useRef()
@@ -68,6 +70,7 @@ import validator from 'validator'
           email: emailRef.current.value,
           password: passwordRef.current.value,
       })
+      
       window.localStorage.setItem("jwtToken", success.data.token)
         console.log(success);
          if(success.status === 200){
@@ -80,7 +83,7 @@ import validator from 'validator'
 
 
 const logout = async (e)=>{
-  e.preventDefault()
+  // e.preventDefault()
   window.localStorage.removeItem("jwtToken")
   console.log(props)
 
@@ -128,7 +131,7 @@ return (
             // type="email"
             fullWidth
             inputRef={userNameRef}
-            onChange={e => setUserName(e.target.value)}
+            // onChange={e => setUserName(e.target.value)}
           />
 
           {/* <hr/> */}
@@ -142,7 +145,7 @@ return (
             type="email"
             fullWidth
             inputRef={emailRef}
-            onChange={e => setEmail(e.target.value)}
+            // onChange={e => setEmail(e.target.value)}
           />
           <br/>
           <TextField
@@ -154,7 +157,7 @@ return (
             type="password"
             fullWidth
             inputRef={passwordRef}
-            onChange={e => setPassword(e.target.value)}
+            // onChange={e => setPassword(e.target.value)}
           />
           <TextField
             // size='normal'

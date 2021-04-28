@@ -95,9 +95,6 @@ const cryptoDataReducer = (state = initialState, action) => {
             //===================================================================================//
             //===================================================================================//
 
-
-
-
         case actionTypes.GET_USER_BY_ID:
             console.log(action)
             return {

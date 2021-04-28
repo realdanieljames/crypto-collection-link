@@ -41,7 +41,7 @@ return (
     />
     
     <select className="base__currency__dropdown" onChange={()=>{
-        console.log(props)
+        // console.log(props)
         // if(props.)
             }}
         >
