@@ -60,7 +60,7 @@ import validator from 'validator'
         // console.log('hello');
         // console.log(emailRef.current.value)
         
-        let success = await axios.post("http://localhost:3001/api/users/register", {
+        let success = await axios.post("/api/users/register", {
         // username: username,
         //   email: email,
         //   password: password,

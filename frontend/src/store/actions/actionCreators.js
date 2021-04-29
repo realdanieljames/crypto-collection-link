@@ -6,7 +6,7 @@ import * as actionTypes from "./actionTypes";
 //===================================================================================//
 
 export const setCryptoData = () => async dispatch => {
-    const payload = await axios.get("http://localhost:3001/api/crypto/ranking");
+    const payload = await axios.get("/api/crypto/ranking");
     // const payload = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=24h");
     const getStartUpData = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin`)
         // console.log(getStartUpData)
@@ -74,7 +74,7 @@ export const getCryptoPriceHistory = (id) => async dispatch => {
 //===================================================================================//
 //===================================================================================//
 export const getAllUsers = () => async dispatch => {
-    const allUsers = await axios.get("http://localhost:3001/api/users/get-users")
+    const allUsers = await axios.get("/api/users/get-users")
     console.log(allUsers)
 
     dispatch({
@@ -89,7 +89,7 @@ export const getAllUsers = () => async dispatch => {
 //===================================================================================//
 //===================================================================================//
 export const getUserById = (id) => async dispatch => {
-    const targetedUser = await axios.get(`http://localhost:3001/api/users/${id}`)
+    const targetedUser = await axios.get(`/api/users/${id}`)
     console.log(targetedUser.data.foundUser)
 
     dispatch({
@@ -104,7 +104,7 @@ export const getUserById = (id) => async dispatch => {
 
 export const addCryptoDataToUserCollection = (userId, cryptoId) => async dispatch => {
 
-    const user = await axios.post(`http://localhost:3001/api/users/add-to-collection`, {
+    const user = await axios.post(`/api/users/add-to-collection`, {
         _id: userId,
         userCollection: cryptoId
     })
