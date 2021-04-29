@@ -78,7 +78,13 @@
 }
 
 .card__menu__select__option {
-    width: 20px;
+    width: 25px;
+    color: white;
+    background-color: rgb(27, 159, 27);
+    border: none;
+    margin-right: 5px;
+    margin-top: 5px;
+    /* text-align: center; */
 }
 
 .favorite__icon {
