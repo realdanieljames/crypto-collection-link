@@ -1,12 +1,25 @@
 import React,{useEffect} from "react";
+import jwt_decode from "jwt-decode";
+import {connect} from "react-redux"
+import {getUserById,   getAllUsers} from "../../store/actions/actionCreators"
 import './UserProfile.css'
 
 const UserProfile = (props) => {
-  console.log(props)
-
+  window.localStorage.getItem('jwtToken')
+  let token = window.localStorage.getItem("jwtToken")
+  let decoded = jwt_decode(token)
+  
   useEffect(()=>{
+    console.log(decoded)
+    props.getAllUsers()
+    props.getUserById(decoded.id)
     
-  })
+  },[])
+
+
+  console.log(props)
+  
+  
   return (
     <div>
       <div>
@@ -44,4 +57,7 @@ const UserProfile = (props) => {
   );
 };
 
-export default UserProfile;
+const mapStateToProps =(state)=>{
+  return {userData:state.userData}
+}
+export default connect (mapStateToProps,{getUserById,getAllUsers})(UserProfile);

@@ -53,12 +53,12 @@ const cryptoCardMenuOptions = (e)=>{
           let decoded = jwt_decode(token)
           console.log(decoded.id)
 
-        props.addCryptoDataToUserCollection(decoded.id,e)
+      return  props.addCryptoDataToUserCollection(decoded.id,e)
         
-        console.log(props)
-        }
-        else alert(`Login to your account to add to your Collection`)
-
+    }
+    else {alert(`Login to your account to add to your Collection`)}
+    
+    console.log(props)
 
 
 }
@@ -74,8 +74,8 @@ return (
             className="coin__card"
             onClick={() => {
             props.showCryptoData(cryptocurrency.id);
-            // props.getCryptoPriceHistory(cryptocurrency.id)
-            // props.getAllUsers()
+
+
             }}
         >
             {/* <button className="favorite__icon" alt="Add To Collection" onClick={()=> console.log('csdsd')}> {!collect?<StarBorderIcon onClick={()=> setCollect(false)}/>:<StarIcon onClick={()=> setCollect(true)} />}</button> */}
