@@ -4,19 +4,20 @@ import * as actionTypes from "./actionTypes";
 
 
 const Axios = axios.create({
-    baseURL: 'http://localhost:3001',
+    baseURL: 'http://localhost:3001/api',
     timeout: 5000
 })
 
-//===================================================================================//
-//===================================================================================//
+const currentUnixTime = 1619722785
+    //===================================================================================//
+    //===================================================================================//
 
 export const setCryptoData = () => async dispatch => {
-    const payload = await Axios.get("/api/crypto/ranking");
+    const payload = await Axios.get("/crypto/ranking");
     // const payload = await Axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false&price_change_percentage=24h");
     const getStartUpData = await Axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin`)
         // console.log(getStartUpData)
-    const getPriceHistory = await Axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1609515825&to=1619363400`)
+    const getPriceHistory = await Axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=usd&from=1609515825&to=${currentUnixTime}`)
 
     // console.log(getStartUpData)
 
@@ -49,7 +50,7 @@ export const showCryptoData = (id) => async dispatch => {
     const payload = await Axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
 
     // const getPriceHistory = await Axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=1`)
-    const getPriceHistory = await Axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=1609515825&to=1619363400`)
+    const getPriceHistory = await Axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart/range?vs_currency=usd&from=1609515825&to=${currentUnixTime}`)
         // console.log(payload)
 
     dispatch({
@@ -80,7 +81,7 @@ export const getCryptoPriceHistory = (id) => async dispatch => {
 //===================================================================================//
 //===================================================================================//
 export const getAllUsers = () => async dispatch => {
-    const allUsers = await Axios.get("/api/users/get-users")
+    const allUsers = await Axios.get("/users/get-users")
     console.log(allUsers)
 
     dispatch({
@@ -95,7 +96,7 @@ export const getAllUsers = () => async dispatch => {
 //===================================================================================//
 //===================================================================================//
 export const getUserById = (id) => async dispatch => {
-    const targetedUser = await Axios.get(`/api/users/${id}`)
+    const targetedUser = await Axios.get(`/users/${id}`)
     console.log(targetedUser.data.foundUser)
 
     dispatch({
@@ -110,7 +111,7 @@ export const getUserById = (id) => async dispatch => {
 
 export const addCryptoDataToUserCollection = (userId, cryptoId) => async dispatch => {
 
-    const user = await Axios.post(`/api/users/add-to-collection`, {
+    const user = await Axios.post(`/users/add-to-collection`, {
         _id: userId,
         userCollection: cryptoId
     })
