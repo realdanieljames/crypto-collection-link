@@ -4,7 +4,8 @@ import * as actionTypes from "./actionTypes";
 
 
 const Axios = axios.create({
-    baseURL: 'http://localhost:3001/api',
+    // baseURL: 'http://localhost:3001/api',
+    baseURL: '/api',
     timeout: 5000
 })
 
