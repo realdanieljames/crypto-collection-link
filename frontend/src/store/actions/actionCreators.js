@@ -4,8 +4,8 @@ import * as actionTypes from "./actionTypes";
 
 
 const Axios = axios.create({
-    // baseURL: 'http://localhost:3001/api',
-    baseURL: '/api',
+    baseURL: 'http://localhost:3001/api',
+    // baseURL: '/api',
     timeout: 5000
 })
 
@@ -27,22 +27,10 @@ export const setCryptoData = () => async dispatch => {
         newCryptoDataArr: payload.data,
         newSelectedCryptoDisplay: { id: getStartUpData.data.id, name: 'Bitcoin', data: getStartUpData.data, priceHistory: getPriceHistory.data.prices },
 
-        // newSelectedCryptoDisplay: { id: 'bitcoin', name: 'Bitcoin', data: getStartUpData.data, priceHistory: getPriceHistory.data.prices },
+
     })
 
 }
-
-//===================================================================================//
-//===================================================================================//
-
-// export const addCryptoData = (id) => async dispatch => {
-//     const payload = await Axios.get(`https://api.coingecko.com/api/v3/coins/${id}`);
-
-//     dispatch({
-//         type: actionTypes.ADD_CRYPTO_DATA,
-//         newCryptoData: payload.data
-//     })
-// }
 
 
 //===================================================================================//
@@ -83,11 +71,14 @@ export const getCryptoPriceHistory = (id) => async dispatch => {
 //===================================================================================//
 export const getAllUsers = () => async dispatch => {
     const allUsers = await Axios.get("/users/get-users")
+        // const targetedUser = await Axios.get(`/users/${id}`)
     console.log(allUsers)
+        // console.log(targetedUser)
 
     dispatch({
         type: actionTypes.GET_ALL_USERS,
-        allUsersArray: allUsers.data.allUsers
+        allUsersArray: allUsers.data.allUsers,
+        // newSelectedUser: targetedUser.data.foundUser
 
     })
 
@@ -98,7 +89,7 @@ export const getAllUsers = () => async dispatch => {
 //===================================================================================//
 export const getUserById = (id) => async dispatch => {
     const targetedUser = await Axios.get(`/users/${id}`)
-    console.log(targetedUser.data.foundUser)
+    console.log(targetedUser)
 
     dispatch({
         type: actionTypes.GET_USER_BY_ID,

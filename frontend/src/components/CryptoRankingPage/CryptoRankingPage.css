@@ -8,6 +8,9 @@
 
 .coin__info {
     display: grid;
+    /* border: 4px outset white; */
+    border-radius: 15px;
+    /* border: white 2px solid;
     /* grid-column: 1/2; */
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     /* grid-template-columns: 17% 17% 17% 17% 17% 17%; */
@@ -15,8 +18,11 @@
     grid-template-rows: auto;
     /* padding-left: 80px; */
     /* padding-right: 80px; */
-    width: 40%;
-    height: 100%;
+    width: 95%;
+    height: 600px;
+    /* height: 100%; */
+    overflow-x: auto;
+    overflow-y: auto;
     /* margin-right: 50px; */
 }
 

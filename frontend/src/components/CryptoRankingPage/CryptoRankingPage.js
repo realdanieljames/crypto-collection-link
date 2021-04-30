@@ -19,14 +19,30 @@ import CryptoDataDisplay from "../CryptoDataDisplay/CryptoDataDisplay";
 //===================================================================================//
 //===================================================================================//
 
-
+// if(window.localStorage.getItem('jwtToken')){
+// let token = window.localStorage.getItem("jwtToken")
+// let decoded = jwt_decode(token)
+// console.log(decoded.id)
+// }
 //===================================================================================//
 //===================================================================================//
 
 const CryptoRankingPage = (props) => {
     useEffect(() => {
-        props.setCryptoData();
-        props.getAllUsers();
+
+        if(window.localStorage.getItem('jwtToken')){
+            let token = window.localStorage.getItem("jwtToken")
+            let decoded = jwt_decode(token)
+            console.log(decoded.id)
+            props.setCryptoData();
+            props.getAllUsers();
+            props.getUserById(decoded.id);
+            }
+            else{
+                props.setCryptoData();
+                props.getAllUsers();
+                // props.getUserById(decoded.id);
+            }
     }, []);
     
     
@@ -143,6 +159,7 @@ return {
     cryptoData: state.cryptoData,
     selectedCryptoDisplay: state.selectedCryptoDisplay,
     userData: state.userData,
+    selectedUser: state.selectedUser
 };
 };
 

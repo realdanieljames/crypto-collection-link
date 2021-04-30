@@ -1,8 +1,10 @@
 import {useState, useRef} from 'react'
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import axios from 'axios'
 import jwt_decode from "jwt-decode";
+import {getUserById} from "../../store/actions/actionCreators"
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -10,6 +12,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 
 
@@ -35,14 +38,18 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 //     //    timeout: 5000
 //     //  })
 //  }
-
+const Axios = axios.create({
+  baseURL: 'http://localhost:3001/api',
+  // baseURL: '/api',
+  timeout: 5000
+})
 
 //=============================================================================================================//
 //=============================================================================================================//
 
 
 
- const Login = () => {
+ const Login = (props) => {
   const [open, setOpen] = useState(false);
   const [username, setUserName] = useState();
   const [email, setEmail] = useState();
@@ -53,6 +60,9 @@ const passwordRef = useRef()
 
   //=============================================================================================================//
   //=============================================================================================================//
+
+
+console.log(props)
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -76,7 +86,7 @@ const passwordRef = useRef()
 
 
     try {
-        let success = await axios.post("/api/users/login", {
+        let success = await Axios.post("/users/login", {
 
         // username: username,
         // email:email,
@@ -89,6 +99,10 @@ const passwordRef = useRef()
         // console.log(success.data.token);
         // console.log(jwt_decode(success.data.token))
         window.localStorage.setItem("jwtToken", success.data.token)
+        let token = window.localStorage.getItem("jwtToken")
+        let decoded = jwt_decode(token)
+        console.log(decoded)
+        props.getUserById(decoded.id)
         if(success.status === 200){
           alert(`${emailRef.current.value} Successfully Logged In`)
           handleClose()
@@ -107,6 +121,8 @@ const passwordRef = useRef()
   
 
   }
+  //=============================================================================================================//
+  //=============================================================================================================//
 const checkForToken =()=>{
 if(window.localStorage.getItem('jwtToken')){
 // console.log('hter')
@@ -213,6 +229,10 @@ return (
 // }
 
 
+const mapStateToProps = (state) =>{
+return {
+  selectedUser: state.selectedUser
+}
+}
 
-
-export default Login;
+export default connect (mapStateToProps, {getUserById})  (Login);

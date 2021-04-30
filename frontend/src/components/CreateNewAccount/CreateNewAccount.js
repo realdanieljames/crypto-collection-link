@@ -28,6 +28,12 @@ import validator from 'validator'
   // const [email, setEmail] = useState();
   // const [password, setPassword] = useState();
 
+
+  const Axios = axios.create({
+    baseURL: 'http://localhost:3001/api',
+    // baseURL: '/api',
+    timeout: 5000
+})
   //=============================================================================================================//
   //=============================================================================================================//
 
@@ -60,7 +66,7 @@ import validator from 'validator'
         // console.log('hello');
         // console.log(emailRef.current.value)
         
-        let success = await axios.post("/api/users/register", {
+        let success = await Axios.post("/users/register", {
         // username: username,
         //   email: email,
         //   password: password,

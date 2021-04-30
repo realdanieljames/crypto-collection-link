@@ -15,8 +15,9 @@ const initialState = {
 
 }
 
-//===================================================================================//
-//===================================================================================//
+console.log(window.localStorage.getItem("jwtToken"))
+    //===================================================================================//
+    //===================================================================================//
 
 const cryptoDataReducer = (state = initialState, action) => {
 
@@ -88,7 +89,8 @@ const cryptoDataReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                userData: action.allUsersArray
+                userData: action.allUsersArray,
+                // selectedUser: action.newSelectedUser
             }
 
 
