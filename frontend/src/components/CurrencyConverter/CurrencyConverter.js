@@ -47,7 +47,7 @@ return (
         >
         <option>{selectedCryptoData.symbol.toUpperCase()} </option>
 
-        {props.cryptoData.map((value) => {
+        {/* {props.cryptoData.map((value) => {
         return (
             <option 
             key={value.id}
@@ -55,7 +55,7 @@ return (
             {value.name} ({value.symbol.toUpperCase()})
             </option>
         );
-        })}
+        })} */}
     </select>
 
 
@@ -75,10 +75,12 @@ return (
     <select className="quote__currency__dropdown" onChange={()=>{console.log(baseCurrencyDropdownRef.current.value) 
         props.showCryptoData(baseCurrencyDropdownRef.current.value)}}  ref={baseCurrencyDropdownRef}>
         <option>USD </option>
+            
+        
 
-        {props.cryptoData.map((value) => {
+        {/* {props.cryptoData.map((value) => {
         return <option  key={value.id} value={value.id}>{value.symbol.toUpperCase()}</option>;
-        })}
+        })} */}
     </select>
     {/* ========================================================================================================== */}
 

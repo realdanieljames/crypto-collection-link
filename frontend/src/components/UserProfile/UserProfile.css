@@ -14,3 +14,7 @@
     grid-column: 3/4;
     background-color: rgb(43, 67, 66);
 }
+
+.user__profile__avatar {
+    margin: 10%;
+}

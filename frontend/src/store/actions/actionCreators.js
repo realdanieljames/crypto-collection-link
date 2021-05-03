@@ -9,7 +9,7 @@ const Axios = axios.create({
     timeout: 5000
 })
 
-const currentUnixTime = 1619722785
+const currentUnixTime = 1620049124
     //===================================================================================//
     //===================================================================================//
 
@@ -101,11 +101,11 @@ export const getUserById = (id) => async dispatch => {
 //===================================================================================//
 //===================================================================================//
 
-export const addCryptoDataToUserCollection = (userId, cryptoId) => async dispatch => {
+export const addCryptoDataToUserCollection = (userId, cryptoData) => async dispatch => {
 
     const user = await Axios.post(`/users/add-to-collection`, {
         _id: userId,
-        userCollection: cryptoId
+        userCollection: cryptoData
     })
     console.log(user)
     dispatch({

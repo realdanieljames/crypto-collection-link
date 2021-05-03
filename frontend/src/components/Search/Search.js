@@ -164,6 +164,7 @@ const mapStateToProps = (state) => {
     cryptoData: state.cryptoData,
     selectedCryptoDisplay: state.selectedCryptoDisplay,
     userData: state.userData,
+    selectedUser: state.selectedUser,
   };
 };
 

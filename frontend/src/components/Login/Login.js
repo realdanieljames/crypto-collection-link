@@ -12,6 +12,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Avatar from '@material-ui/core/Avatar';
+import CreateNewAccount from "../CreateNewAccount/CreateNewAccount"
 
 
 
@@ -130,10 +132,14 @@ if(window.localStorage.getItem('jwtToken')){
   let decoded = jwt_decode(token)
   // console.log(decoded.email)
   // return window.localStorage.getItem('jwtToken')
-  return decoded.email
+  // return decoded.email
+  // return true
+  // return <div className="header__avatar"><Avatar/> <p>{decoded.email}</p> </div>
+  return <div className="login__button"><p>{decoded.email}</p> </div>
   // window.localStorage.getItem('jwtToken')?window.localStorage.jwtToken.email: 'Login'
 }
 else return 'Login'
+// else return false
 }
 
 // console.log(checkForToken())
@@ -141,7 +147,7 @@ else return 'Login'
 //=============================================================================================================//
 
 return (
-    <div>
+    <div className="login__button">
 
     {/* <span className="login__button" onClick={handleClickOpen}>Login</span> */}
 
@@ -196,7 +202,7 @@ return (
         
 
             <DialogContentText>
-            <h3>New to Crypto Collection? <a href="">Create an Account here.</a></h3>
+            <h3>New to Crypto Collection? <a href={<CreateNewAccount/>}>Create an Account here.</a></h3>
 
           </DialogContentText>
 

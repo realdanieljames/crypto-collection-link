@@ -32,7 +32,7 @@ import validator from 'validator'
   const Axios = axios.create({
     baseURL: 'http://localhost:3001/api',
     // baseURL: '/api',
-    timeout: 5000
+    // timeout: 5000
 })
   //=============================================================================================================//
   //=============================================================================================================//
@@ -122,7 +122,7 @@ const checkForToken =()=>{
   //=============================================================================================================//
   //=============================================================================================================//
 return (
-    <div>
+    <div className="create__account__button" >
 
         {/* <span className="create__account__button" onClick={userToken? logout:handleClickOpen}>{userToken?'Logout': 'Create New Account'} </span> */}
         <span className="create__account__button" onClick={userToken? logout:handleClickOpen}>{checkForToken()} </span>

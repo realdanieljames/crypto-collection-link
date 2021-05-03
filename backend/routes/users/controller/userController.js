@@ -111,7 +111,7 @@ module.exports = {
 
 
     addCryptoDataToUserCollection: async(req, res) => {
-        console.log(req)
+        console.log(req).body
         try {
 
             let foundUser = await UserSchema.findOneAndUpdate({

@@ -1,43 +1,83 @@
 import React, { useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
 import { connect } from "react-redux";
-import { getUserById, getAllUsers } from "../../store/actions/actionCreators";
+import { getUserById, getAllUsers, showCryptoData, setCryptoData } from "../../store/actions/actionCreators";
 import "./UserProfile.css";
 import Avatar from '@material-ui/core/Avatar';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+
+
+  //===================================================================================//
+  //===================================================================================//
+  
+const useStyles = makeStyles((theme) => ({
+  // root: {
+  //   display: 'flex',
+  //   '& > *': {
+  //     margin: theme.spacing(1),
+  //   },
+  // },
+  small: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
+  large: {
+    width: theme.spacing(25),
+    height: theme.spacing(25),
+  },
+}));
+  //===================================================================================//
+  //===================================================================================//
+  
+
 
 const UserProfile = (props) => {
-  window.localStorage.getItem("jwtToken");
-  let token = window.localStorage.getItem("jwtToken");
-  let decoded = jwt_decode(token);
-  console.log(decoded);
+
+
+
   //===================================================================================//
   //===================================================================================//
   
-  // const [loggedInUser, setLoggedInUser] = useState({})
-  
-  //===================================================================================//
-  //===================================================================================//
   useEffect(() => {
+    window.localStorage.getItem("jwtToken");
+    let token = window.localStorage.getItem("jwtToken");
+    let decoded = jwt_decode(token);
+    console.log(decoded);
+    console.log(props)
     props.getAllUsers();
     props.getUserById(decoded.id);
-    // setLoggedInUser(props.selectedUser)
-    // console.log(loggedInUser)
+    // props.showCryptoData()
+    // props.selectedUser.userCollection.map((value)=>{
+    //   let gatheredCollection =   props.showCryptoData(value)
+      
+    //   console.log(gatheredCollection)
+    //   console.log(value)
+    //   return gatheredCollection
+    // })
+
+
   }, []);
 
   console.log(props);
+  const classes = useStyles();
 
-
+  //===================================================================================//
+  //===================================================================================//
+  
   return (
     <div>
-      <div>
-        <button>Click here!</button>
-      </div>
+    
 
       <div className="user__profile__container">
         <div className="user__profile__stats">
-          <img />
-          <Avatar src="/broken-image.jpg" height={'1000px'} />
-          <h1>Profile Name{props.selectedUser.email}</h1>
+          {/* <img /> */}
+          <div className="user__profile__avatar">
+
+          <Avatar src="/broken-image.jpg" className={classes.large}  />
+          </div>
+          <h1>{props.selectedUser.email}</h1>
           <h3>
             Following <br />
             100
@@ -57,26 +97,34 @@ const UserProfile = (props) => {
         <div className="user__crypto__collection">
           <h1>Collection Value</h1>
           <h1>$4,419,000</h1>
+          <div>
+            {props.selectedUser.userCollection.map((value) => {
+              //  console.log(value)
+              <div>{value}</div>;
+  
+            })}
+          </div>
           {props.selectedUser.username}
-        </div>
-        <div>
-          {/* ({props.selectedUser.userCollection.map((value) => {
-            //  console.log(value)
-            // <div>{value}</div>;
-
-          })}) */}
+          {props.selectedUser.userCollection.map((value)=>{
+            // props.showCryptoData(value)
+            return <div>{value}</div>
+          })}
         </div>
       </div>
     </div>
   );
 };
-
+  //===================================================================================//
+  //===================================================================================//
+  
 const mapStateToProps = (state) => {
   return {
+    cryptoData: state.cryptoData,
     userData: state.userData,
     selectedUser: state.selectedUser,
+    selectedCryptoDisplay: state.selectedCryptoDisplay,
   };
 };
-export default connect(mapStateToProps, { getUserById, getAllUsers })(
+export default connect(mapStateToProps, { getUserById, getAllUsers, showCryptoData,setCryptoData })(
   UserProfile
 );

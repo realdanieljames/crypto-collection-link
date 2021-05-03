@@ -5,7 +5,8 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import StarIcon from '@material-ui/icons/Star';
 import {
   setCryptoData,
-  // addCryptoData,
+  addCryptoDataToUserCollection,
+  getUserById,
   showCryptoData,
   getCryptoPriceHistory,
 } from "../../store/actions/actionCreators";
@@ -24,7 +25,10 @@ const CryptoDataDisplay = (props) => {
     props.showCryptoData(); 
   }, []);
 
-  // console.log(props);
+  console.log(props);
+  // props.cryptoData.map((value)=>{
+  //   console.log(value)
+  // })
 
   return (
     <div className="crypto__data__display">
@@ -52,20 +56,28 @@ const CryptoDataDisplay = (props) => {
                   {/* {selectedCryptoData.name} */}
                   {cryptocurrency.name}
                 </h2>
+                <div>
+
+         
+                <a href={props.selectedCryptoDisplay.data.links.homepage[0] } target="_blank"> {props.selectedCryptoDisplay.data.links.homepage[0]}</a>
+                </div>
                 <p className="crypto__data__display__symbol">
                   {/* {selectedCryptoData.symbol.toUpperCase()} */}
                   {cryptocurrency.symbol.toUpperCase()}
-                  <div className="favorite__icon"> {<StarBorderIcon/>}</div>
+                  {/* <div className="favorite__icon"> {<StarBorderIcon/>}</div> */}
+                  <button className="favorite__icon" o
+                  nClick={ props.addCryptoDataToUserCollection(props.selectedUser.id,props.selectedCryptoDisplay.id)}
+                  > 
+                  {/* {`Add To Collection `}<StarBorderIcon/></button> */}
+                  {`Add To Collection`}</button>
                 </p>
 
                 <p className="crypto__data__display__rank">
                   Rank #{cryptocurrency.market_cap_rank}
                 </p>
 
-                {/*                <div className="crypto__data__display__description">
-                <h3> What is {selectedCryptoData.name}?</h3>
-                <p >{selectedCryptoData.description.en}</p>
-                </div> */}
+
+               
               </div>
               {/*======================================================================================================================== */}
               <div className="crypto__data__display__numerical__data">
@@ -93,6 +105,11 @@ const CryptoDataDisplay = (props) => {
               <CurrencyConverter />
 
               <Chart />
+
+              {cryptocurrency.id === props.selectedCryptoDisplay.id?<div className="crypto__data__display__description">
+                <h3> What is {cryptocurrency.name}?</h3>
+                <p >{props.selectedCryptoDisplay.data.description.en}</p>
+                </div>: null }
             </div>
           );
         }
@@ -107,12 +124,15 @@ const mapStateToProps = (state) => {
   return {
     cryptoData: state.cryptoData,
     selectedCryptoDisplay: state.selectedCryptoDisplay,
+    selectedUser: state.selectedUser,
   };
 };
 
 export default connect(mapStateToProps, {
   setCryptoData,
   // addCryptoData,
+  getUserById,
+  addCryptoDataToUserCollection,
   showCryptoData,
   getCryptoPriceHistory,
 })(CryptoDataDisplay);
