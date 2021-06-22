@@ -46,6 +46,7 @@ const CryptoRankingPage = (props) => {
   //===================================================================================//
 
   const cryptoCardMenuOptions = (e) => {
+      console.log(e)
     // console.log(props.showCryptoData(e));
     if (window.localStorage.getItem("jwtToken")) {
       let token = window.localStorage.getItem("jwtToken");
@@ -54,7 +55,8 @@ const CryptoRankingPage = (props) => {
 
       return (
         props.showCryptoData(e),
-        props.addCryptoDataToUserCollection(decoded.id, e)
+        props.addCryptoDataToUserCollection(decoded.id, e),
+        console.log(props)
       );
     } else {
       alert(`Login to your account to add to your Collection`);
@@ -84,29 +86,35 @@ const CryptoRankingPage = (props) => {
             onClick={() => {
               props.showCryptoData(cryptocurrency.id);
             }}
+                //       onChange={() => cryptoCardMenuOptions({id:cryptocurrency.id,
+                // name:cryptocurrency.name, data:cryptocurrency.data})}
+              
           >
-            {console.log(cryptocurrency)}
+            {/* {console.log(cryptocurrency)} */}
             {/* <button className="favorite__icon" alt="Add To Collection" onClick={()=> console.log('csdsd')}> {!collect?<StarBorderIcon onClick={()=> setCollect(false)}/>:<StarIcon onClick={()=> setCollect(true)} />}</button> */}
             {/* {<FavoriteBorderIcon/>} */}
+            
             <div className="card__rank">
               {" "}
               Rank: {cryptocurrency.market_cap_rank} {<br />}{" "}
               <strong> ( {cryptocurrency.symbol.toUpperCase()} )</strong>{" "}
             </div>
+
+
             <div className="card__menu__options">
               <select
                 className="card__menu__select__option"
                 ref={cardMenuRef}
-                onChange={() => cryptoCardMenuOptions(cryptocurrency.id)}
+                onChange={() => {cryptoCardMenuOptions(cryptocurrency.id)}}
               >
-         
-                {/* <option></option> */}
                 <option
                   value={cryptocurrency.id}
                 >{`Add ${cryptocurrency.symbol.toUpperCase()} To Collection`}
                 </option>
               </select>
             </div>
+
+
             {/* <div className="card__marketcap"> MCap: {cryptocurrency.market_data.market_cap.usd.toLocaleString("en-US",currencyObj)}</div> */}
             {/* <div className="card__circulating__supply">Circulating Supply:{<br/>} {Number(cryptocurrency.market_data.circulating_supply).toLocaleString("en-US")} <strong> {cryptocurrency.symbol.toUpperCase()}</strong></div> */}
 

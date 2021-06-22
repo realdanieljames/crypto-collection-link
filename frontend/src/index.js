@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 
 
 
-const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION__ || compose;
+const composeEnhancers =  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
 
 const store = createStore(cryptoDataReducer, composeEnhancers(applyMiddleware(thunk)))
 

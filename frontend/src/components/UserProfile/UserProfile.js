@@ -106,6 +106,7 @@ const UserProfile = (props) => {
           </div>
           {props.selectedUser.username}
           {props.selectedUser.userCollection.map((value)=>{
+            // if{value === selected}
             // props.showCryptoData(value)
             return <div>{value}</div>
           })}

@@ -65,8 +65,8 @@ const CryptoDataDisplay = (props) => {
                   {/* {selectedCryptoData.symbol.toUpperCase()} */}
                   {cryptocurrency.symbol.toUpperCase()}
                   {/* <div className="favorite__icon"> {<StarBorderIcon/>}</div> */}
-                  <button className="favorite__icon" o
-                  nClick={ props.addCryptoDataToUserCollection(props.selectedUser.id,props.selectedCryptoDisplay.id)}
+                  <button className="favorite__icon" 
+                  // onClick={ props.addCryptoDataToUserCollection(props.selectedUser.id,props.selectedCryptoDisplay.id)}
                   > 
                   {/* {`Add To Collection `}<StarBorderIcon/></button> */}
                   {`Add To Collection`}</button>
